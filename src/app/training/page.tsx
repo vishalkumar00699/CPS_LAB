@@ -25,7 +25,7 @@ const workshops = [
     'title': "hands-on Cyber-Physical Systems (CPS) training at SBPUAT, Meerut.",
     'description':
         "iHub – AWaDH @ IIT Ropar conducted a hands-on CPS training at Sardar Vallabhbhai Patel University of Agriculture and Technology, Meerut.",
-    'image': 'assets/images/SBPUAT.jpg',
+    'image': 'assets/images/SBPUAT.jpeg',
     'location': 'SBPUAT, Meerut.',
     'date': '',
     'participants': '',
@@ -34,7 +34,7 @@ const workshops = [
     'title': "Workshop Training on BLE & CPS at HRIT University, Ghaziabad.",
     'description':
         "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on BLE & Cyber-Physical Systems (CPS) training at HRIT University, Ghaziabad.",
-    'image': 'assets/images/HRIT.jpg',
+    'image': 'assets/images/HRIT.jpeg',
     'location': 'HRIT University, Ghaziabad.',
     'date': '',
     'participants': '',
