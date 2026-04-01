@@ -1,4 +1,3 @@
-
 'use client';
 
 import { allSensors } from '@/data/products';
@@ -6,7 +5,7 @@ import Link from 'next/link';
 import { useAuth } from '@/context/AuthContext';
 import { useEffect, useState } from 'react';
 import { fetchAllRequests, requestDocumentAccess, fetchUserAccess } from '@/lib/api/admin';
-import { downloadDocument } from '@/lib/api/download';
+import { downloadDocument, downloadFileFromUrl } from '@/lib/api/download';
 import { SENSOR_FILES } from '@/data/downloads';
 import { AccessRequest } from '@/types/admin';
 
@@ -105,13 +104,42 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
     );
   }
 
-  const handleDownload = async (type: string = 'datasheet') => {
+  // Open PDF/Files in browser for public documents
+  const handleView = async (type: string = 'datasheet') => {
     if (sensor.datasheetKey) {
-      const result = await downloadDocument(sensor.datasheetKey, type);
-      if (!result.success) {
-        alert(result.message);
+      const filePath = SENSOR_FILES[sensor.datasheetKey]?.[type];
+      if (!filePath) {
+        alert('Document link not available.');
+        return;
       }
+      
+      const normalizedPath = filePath.startsWith('http') ? filePath : (filePath.startsWith('/') ? filePath : `/${filePath}`);
+      
+      // If it's a remote PDF, fetch it as a blob and open as an object URL 
+      // to bypass server-side "download" headers (Content-Disposition: attachment)
+      if (normalizedPath.toLowerCase().endsWith('.pdf') && normalizedPath.startsWith('http')) {
+        try {
+          const response = await fetch(normalizedPath);
+          if (response.ok) {
+            const blob = await response.blob();
+            // Create a Blob URL with explicit PDF type to force in-browser previewing
+            const previewUrl = URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
+            window.open(previewUrl, '_blank');
+            return;
+          }
+        } catch (error) {
+          console.warn("Failed to fetch as blob, falling back to direct open:", error);
+        }
+      }
+
+      window.open(normalizedPath, '_blank');
     }
+  };
+
+  // Force download for protected code files
+  const handleDirectDownload = async (url: string, filenameSuffix: string) => {
+    const filename = `${sensor.datasheetKey}_${filenameSuffix.replace(/\s+/g, '_')}`;
+    await downloadFileFromUrl(url, filename);
   };
 
   const renderActionButtons = () => {
@@ -127,7 +155,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
         publicButtons.push(
           <button 
             key="datasheet"
-            onClick={() => handleDownload('datasheet')}
+            onClick={() => handleView('datasheet')}
             className="bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/10 flex items-center gap-2 group"
           >
             <span className="material-symbols-outlined text-primary group-hover:scale-110 transition-transform">description</span>
@@ -143,7 +171,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           publicButtons.push(
             <button 
               key={type}
-              onClick={() => handleDownload(type)}
+              onClick={() => handleView(type)}
               className="bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/10 flex items-center gap-2 group"
             >
               <span className="material-symbols-outlined text-accent group-hover:scale-110 transition-transform">menu_book</span>
@@ -162,7 +190,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
           <button 
             key="experiments"
             onClick={() => {
-              if (fileConfigExpKey) handleDownload(fileConfigExpKey);
+              if (fileConfigExpKey) handleView(fileConfigExpKey);
               else window.open(directExpLink, '_blank');
             }}
             className="bg-white/5 hover:bg-white/10 text-white font-bold py-4 px-8 rounded-full transition-all border border-white/10 flex items-center gap-2 group"
@@ -202,16 +230,14 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       } else if (userAccess.includes(datasheetKey) || requestStatus?.status === 'GRANTED') {
         availableCode.forEach(cl => {
           protectedButtons.push(
-            <a 
+            <button 
               key={cl.key}
-              href={(sensor as any)[cl.key]} 
-              target="_blank" 
-              rel="noopener noreferrer"
+              onClick={() => handleDirectDownload((sensor as any)[cl.key], cl.label)} 
               className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2 group"
             >
               <span className="material-symbols-outlined group-hover:rotate-12 transition-transform">code</span>
               {cl.label}
-            </a>
+            </button>
           );
         });
       } else if (requestStatus?.status === 'PENDING') {
@@ -268,7 +294,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
 
         {/* Hero Section */}
         <div className="flex flex-col lg:flex-row gap-16 items-start mb-24">
-          <div className="w-full lg:w-1/2 bg-white rounded-3xl p-12 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group">
+          <div className="w-full lg:w-1/2 bg-gradient-to-br from-surface-container to-surface rounded-3xl p-12 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group">
              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
              <img 
                src={`/${sensor.imagePath}`} 

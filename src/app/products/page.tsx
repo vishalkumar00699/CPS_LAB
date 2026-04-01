@@ -69,7 +69,6 @@ function TiltCard({ children, href }: { children: React.ReactNode, href: string 
 
 export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState('');
-  const [showAll, setShowAll] = useState(false);
 
   const filteredItems = allSensors.filter(item => {
     const fullTitle = `${item.title.trim()} ${item.highlightText.trim()}`.replace(/\s+/g, ' ');
@@ -77,7 +76,7 @@ export default function ProductsPage() {
       item.subtitle.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
-  const displayedItems = showAll ? filteredItems : filteredItems.slice(0, 8);
+  const displayedItems = filteredItems;
 
   return (
     <div className="relative flex flex-col min-h-screen bg-surface text-on-surface">
@@ -113,7 +112,6 @@ export default function ProductsPage() {
                 value={searchQuery}
                 onChange={(e) => {
                   setSearchQuery(e.target.value);
-                  setShowAll(true);
                 }}
                 className="w-full bg-surface-container/80 backdrop-blur-xl border border-white/10 rounded-full py-5 pl-14 pr-6 text-white text-lg placeholder-white/40 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/50 transition-all font-body shadow-2xl relative z-0"
               />
@@ -139,10 +137,7 @@ export default function ProductsPage() {
 
                   return (
                     <TiltCard key={slug + index} href={`/products/${slug}`}>
-                      <div
-                        className="h-60 bg-white relative overflow-hidden flex items-center justify-center p-8 group-hover:bg-slate-50 transition-colors"
-                        style={{ transform: "translateZ(20px)" }} // Inner lift
-                      >
+                      <div className="h-60 bg-gradient-to-br from-surface-container to-[#0a0a0a] relative overflow-hidden flex items-center justify-center p-8 transition-colors">
                         {/* Dynamic decorative backdrop inside the image area */}
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                         <img
@@ -172,22 +167,6 @@ export default function ProductsPage() {
             </motion.div>
           )}
 
-          {!showAll && filteredItems.length > 8 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="mt-20 flex justify-center"
-            >
-              <button
-                onClick={() => setShowAll(true)}
-                className="px-10 py-5 rounded-full border border-white/10 text-white font-label font-bold text-lg tracking-widest uppercase hover:bg-white/10 hover:border-white/30 transition-all cursor-pointer shadow-lg active:scale-95 flex items-center gap-3 group bg-surface-container"
-              >
-                View Catalog ({filteredItems.length - 8} more)
-                <span className="material-symbols-outlined text-primary group-hover:translate-y-1 transition-transform">expand_more</span>
-              </button>
-            </motion.div>
-          )}
         </section>
       </main>
 

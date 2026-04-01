@@ -5,13 +5,40 @@ import { useEffect, useRef, useState } from 'react';
 
 // Shared data
 const stats = [
-  { icon: 'science', count: 22, label: 'Established CPS Labs', suffix: '' },
+  { icon: 'science', count: 26, label: 'Established CPS Labs', suffix: '' },
   { icon: 'school', count: 24, label: 'CPS Lab Trainings', suffix: '+' },
   { icon: 'groups', count: 400, label: 'Faculty Trained', suffix: '+' },
   { icon: 'psychology', count: 800, label: 'Students Trained', suffix: '+' },
 ];
 
 const workshops = [
+  {
+    'title': "hands-on Cyber-Physical Systems (CPS) training at MIT-WPU PUNE.",
+    'description':
+        "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on Cyber-Physical Systems (CPS) training at MIT-WPU PUNE.",
+    'image': 'assets/images/MIT.jpeg',
+    'location': 'MIT-WPU PUNE',
+    'date': '',
+    'participants': '',
+  },
+  {
+    'title': "hands-on Cyber-Physical Systems (CPS) training at SBPUAT, Meerut.",
+    'description':
+        "iHub – AWaDH @ IIT Ropar conducted a hands-on CPS training at Sardar Vallabhbhai Patel University of Agriculture and Technology, Meerut.",
+    'image': 'assets/images/SBPUAT.jpg',
+    'location': 'SBPUAT, Meerut.',
+    'date': '',
+    'participants': '',
+  },
+  {
+    'title': "Workshop Training on BLE & CPS at HRIT University, Ghaziabad.",
+    'description':
+        "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on BLE & Cyber-Physical Systems (CPS) training at HRIT University, Ghaziabad.",
+    'image': 'assets/images/HRIT.jpg',
+    'location': 'HRIT University, Ghaziabad.',
+    'date': '',
+    'participants': '',
+  },
   {
     title: "Empowering Students through IoT Training at AWaDH CPS Lab, NIT Delhi",
     description: "iHub – AWaDH @ IIT Ropar conducted a hands-on Internet of Things (IoT) training session at the AWaDH CPS Lab in NIT Delhi. Students explored IoT fundamentals and real-time applications.",
