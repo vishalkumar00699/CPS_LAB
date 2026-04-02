@@ -193,7 +193,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
       const manualTypes = ['manual', 'quec_manual', 'nrf_manual'];
       manualTypes.forEach(type => {
         if (fileConfig[type]) {
-          const label = type === 'manual' ? 'User Manual' : type === 'quec_manual' ? 'Quec Manual' : 'nRF Manual';
+          const label = type === 'manual' ? 'nRF Manual' : type === 'quec_manual' ? 'Quec Manual' : 'UI Manual';
           publicButtons.push(
             <button 
               key={type}

@@ -22,6 +22,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [confirmationCode, setConfirmationCode] = useState('');
   const [authStep, setAuthStep] = useState<'LOGIN_SIGNUP' | 'CONFIRM_SIGNUP' | 'FORGOT_PASSWORD' | 'CONFIRM_FORGOT_PASSWORD'>('LOGIN_SIGNUP');
@@ -46,7 +47,7 @@ export default function LoginPage() {
           setAuthStep('CONFIRM_SIGNUP');
         } else {
           await checkUserSession();
-          router.push('/');
+          router.push('/home');
         }
       } else {
         // Sign Up
@@ -84,6 +85,7 @@ export default function LoginPage() {
       await handleConfirmSignUp({ username, confirmationCode });
       setIsLogin(true);
       setAuthStep('LOGIN_SIGNUP');
+      router.push('/home');
     } catch (err: any) {
       setError(err.message || 'Verification failed.');
     } finally {
@@ -127,7 +129,10 @@ export default function LoginPage() {
   };
 
   const handleGuest = () => {
-    router.push('/');
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('guestMode', 'true');
+    }
+    router.push('/home');
   };
 
   return (
@@ -246,13 +251,20 @@ export default function LoginPage() {
                       <div className="relative group">
                         <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant group-focus-within:text-primary transition-colors">lock</span>
                         <input 
-                          type="password" 
+                          type={showPassword ? "text" : "password"}  
                           placeholder="Password"
                           required
                           value={password}
                           onChange={e => setPassword(e.target.value)}
-                          className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white font-body focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder:text-on-surface-variant/50"
+                          className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-12 text-white font-body focus:outline-none focus:border-primary focus:bg-white/10 transition-all placeholder:text-on-surface-variant/50"
                         />
+                        <button
+                          type="button"
+                          onClick={() => setShowPassword(!showPassword)}
+                          className="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors"
+                        >
+                          {showPassword ? 'visibility' : 'visibility_off'}
+                        </button>
                       </div>
                     </div>
 
@@ -432,13 +444,20 @@ export default function LoginPage() {
                     <div className="relative group">
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant group-focus-within:text-primary">lock</span>
                       <input 
-                        type="password" 
+                        type={showPassword ? "text" : "password"} 
                         placeholder="New Password"
                         required
                         value={password}
                         onChange={e => setPassword(e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-white font-body focus:outline-none focus:border-primary transition-all"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 pl-12 pr-12 text-white font-body focus:outline-none focus:border-primary transition-all"
                       />
+                      <button
+                        type="button"
+                        onClick={() => setShowPassword(!showPassword)}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors"
+                      >
+                        {showPassword ? 'visibility' : 'visibility_off'}
+                      </button>
                     </div>
                     <button type="submit" className="w-full bg-primary hover:bg-primary-light text-white font-headline font-bold text-lg py-4 rounded-2xl">
                       Update Password

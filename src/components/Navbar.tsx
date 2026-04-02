@@ -14,24 +14,29 @@ export default function Navbar() {
 
   const handleLogout = async () => {
     await logout();
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('guestMode');
+    }
     setIsMenuOpen(false);
-    router.push('/');
+    router.push('/login');
   };
 
   const navLinks = [
-    { name: 'Home', path: '/' },
+    { name: 'Home', path: '/home' },
     { name: 'Deployments', path: '/deployments' },
     { name: 'Products', path: '/products' },
     { name: 'Training & Workshop', path: '/training' },
     { name: 'Contact', path: '/contact' },
   ];
 
+  if (pathname === '/' || pathname === '/login') return null;
+
   return (
     <nav className="fixed top-0 w-full z-50 glass-nav shadow-[0_8px_32px_0_rgba(180,197,255,0.06)] border-b border-white/5">
       <div className="flex items-center px-8 py-4 max-w-7xl mx-auto font-headline font-medium tracking-tight">
         {/* LEFT: Logo */}
         <div className="flex-1 flex items-center">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/home" className="flex items-center gap-2">
             <Image
               src="/images/app_logo.png"
               alt="CPS Lab Logo"
