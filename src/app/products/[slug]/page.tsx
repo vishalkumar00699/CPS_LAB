@@ -142,6 +142,21 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
     await downloadFileFromUrl(url, filename);
   };
 
+  const handleEnquire = () => {
+    const recipient = (sensor as any).email || 'krishnanpallavi63@gmail.com';
+    const subject = "Product Enquiry";
+    const body = `Hello, I am interested in your ${productDisplayName} product.`;
+    
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    
+    if (isMobile) {
+      window.location.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    } else {
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${recipient}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.open(gmailUrl, '_blank');
+    }
+  };
+
   const renderActionButtons = () => {
     const fileConfig = sensor.datasheetKey ? SENSOR_FILES[sensor.datasheetKey] : null;
     
@@ -151,6 +166,17 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
 
     // 1. PUBLIC DOCUMENTS (Datasheet & Manuals)
     if (fileConfig) {
+      // 0. ENQUIRE BUTTON
+      publicButtons.push(
+        <button 
+          key="enquire"
+          onClick={handleEnquire}
+          className="bg-primary hover:bg-primary-light text-white font-bold py-4 px-8 rounded-full transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] flex items-center gap-2 group"
+        >
+          <span className="material-symbols-outlined text-white group-hover:scale-110 transition-transform">mail</span>
+          Enquire
+        </button>
+      );
       if (fileConfig.datasheet) {
         publicButtons.push(
           <button 

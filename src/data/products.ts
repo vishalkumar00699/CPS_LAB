@@ -1,42 +1,4 @@
 export const allSensors = [
-  {
-    "title": "Data",
-    "highlightText": "Logger",
-    "subtitle":
-        "High-Performance LTE IoT Board with Built-in GPS & Solar Power",
-    "bannerPoints": [
-      "Powered by Quectel EC200U LTE Cat 1 Module",
-      "Integrated LTE and GPS Antennas for Cloud Connectivity",
-      "Supports MPPT Solar Charging and Dual SIM Network Redundancy",
-    ],
-    "features": [
-      "OpenCPU architecture with Quectel EC200U LTE Cat 1 module",
-      "Built-in LTE and GPS antennas for connectivity and tracking",
-      "Dual SIM switching for reliable network redundancy",
-      "Supports QuecPython for rapid IoT application development",
-      "Multi-protocol interfaces: UART, I²C, SPI, RS232, and RS485",
-    ],
-    "applications": [
-      "Smart agriculture: real-time monitoring of soil, weather, and irrigation",
-      "Industrial automation: remote control and predictive maintenance",
-      "Environmental monitoring with onboard sensors and GPS tracking",
-      "Asset tracking using LTE and GPS for reliable data transmission",
-      "Weather stations and IoT gateways for cloud-based data logging",
-    ],
-    "specifications": [
-      "Processor Module: Quectel EC200U LTE Cat 1",
-      "Input Voltage Range: 5V – 12V DC",
-      "Operating Temperature: -30°C to +75°C",
-      "Communication Interfaces: 3× UART, 2× I²C, 1× SPI",
-      "Industrial Interfaces: RS232 and RS485",
-      "Wireless Connectivity: LTE (4G), GPS",
-      "Storage Support: microSD card slot (up to 32GB)",
-      "Power Management: MPPT solar charging via CN3791, Li-ion battery, and USB-C input",
-    ],
-    "imagePath": "assets/images/dataloggerrender.png",
-    "email": "krishnanpallavi63@gmail.com",
-    "datasheetKey": "DataLogger",
-  },
   // gATEWAY
   {
     "title": "BLE",
@@ -248,6 +210,84 @@ export const allSensors = [
     "imagePath": "assets/images/soil.png",
     "email": "krishnanpallavi63@gmail.com",
     "datasheetKey": "Soil",
+  },
+
+  {
+    "title": "Activity/Vibration",
+    "highlightText": "Monitor Kit",
+    "subtitle":
+        "Real-time motion and environmental data tracker for STEM and IoT projects",
+    "bannerPoints": [
+      "3-axis accelerometer for real-time motion tracking",
+      "Bluetooth Low Energy (BLE) connectivity for mobile and PC",
+      "Compact, low-power, portable, and wearable design",
+    ],
+    "features": [
+      "Real-time motion tracking with high-precision accelerometer",
+      "Seamless Bluetooth Low Energy (BLE) connectivity",
+      "Compact, low-power design ideal for wearables",
+      "Supports experiments like pendulum motion, velocity, and step counting",
+      "Multiple communication interfaces (PC, SPI, UART) for easy integration",
+    ],
+    "applications": [
+      "Physics Experiments – Pendulum motion, harmonic oscillation, gravity, and acceleration studies",
+      "Step Counting – Pedometer creation for detecting and counting steps",
+      "Velocity Measurement – Track acceleration over time and calculate velocity",
+      "Speed Monitoring – Real-time speed measurement using accelerometer data",
+      "Environmental Monitoring – Measure motion/vibration data for STEM and IoT projects",
+    ],
+    "specifications": [
+      "Controller: Nordic nRF52832 SoC, ARM Cortex-M4F, 64 MHz",
+      "Memory: 512 KB Flash, 64 KB RAM",
+      "Accelerometer: LIS3DH, 3-axis, ±2g/±4g/±8g/±16g, 12-bit resolution",
+      "Wireless: Bluetooth Low Energy (BLE 4.2 / 5.0 compatible)",
+      "Interfaces: PC, SPI, UART",
+      "Operating Voltage: 1.7 V – 3.6 V",
+      "Form Factor: Compact, battery-powered design for portable use",
+      "Use Case: Suitable for STEM education, wearable projects, and IoT applications",
+    ],
+    "imagePath": "assets/images/Actitvity.png",
+    "email": "krishnanpallavi63@gmail.com",
+    "datasheetKey": "ACTIVITY",
+  },
+
+  {
+    "title": "Data",
+    "highlightText": "Logger",
+    "subtitle":
+        "High-Performance LTE IoT Board with Built-in GPS & Solar Power",
+    "bannerPoints": [
+      "Powered by Quectel EC200U LTE Cat 1 Module",
+      "Integrated LTE and GPS Antennas for Cloud Connectivity",
+      "Supports MPPT Solar Charging and Dual SIM Network Redundancy",
+    ],
+    "features": [
+      "OpenCPU architecture with Quectel EC200U LTE Cat 1 module",
+      "Built-in LTE and GPS antennas for connectivity and tracking",
+      "Dual SIM switching for reliable network redundancy",
+      "Supports QuecPython for rapid IoT application development",
+      "Multi-protocol interfaces: UART, I²C, SPI, RS232, and RS485",
+    ],
+    "applications": [
+      "Smart agriculture: real-time monitoring of soil, weather, and irrigation",
+      "Industrial automation: remote control and predictive maintenance",
+      "Environmental monitoring with onboard sensors and GPS tracking",
+      "Asset tracking using LTE and GPS for reliable data transmission",
+      "Weather stations and IoT gateways for cloud-based data logging",
+    ],
+    "specifications": [
+      "Processor Module: Quectel EC200U LTE Cat 1",
+      "Input Voltage Range: 5V – 12V DC",
+      "Operating Temperature: -30°C to +75°C",
+      "Communication Interfaces: 3× UART, 2× I²C, 1× SPI",
+      "Industrial Interfaces: RS232 and RS485",
+      "Wireless Connectivity: LTE (4G), GPS",
+      "Storage Support: microSD card slot (up to 32GB)",
+      "Power Management: MPPT solar charging via CN3791, Li-ion battery, and USB-C input",
+    ],
+    "imagePath": "assets/images/dataloggerrender.png",
+    "email": "krishnanpallavi63@gmail.com",
+    "datasheetKey": "DataLogger",
   },
 
   {
@@ -635,44 +675,6 @@ export const allSensors = [
         "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Bme680_UI",
     "nrfUICodeLink":
         "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Bme680_UI",
-  },
-  {
-    "title": "Activity/Vibration",
-    "highlightText": "Monitor Kit",
-    "subtitle":
-        "Real-time motion and environmental data tracker for STEM and IoT projects",
-    "bannerPoints": [
-      "3-axis accelerometer for real-time motion tracking",
-      "Bluetooth Low Energy (BLE) connectivity for mobile and PC",
-      "Compact, low-power, portable, and wearable design",
-    ],
-    "features": [
-      "Real-time motion tracking with high-precision accelerometer",
-      "Seamless Bluetooth Low Energy (BLE) connectivity",
-      "Compact, low-power design ideal for wearables",
-      "Supports experiments like pendulum motion, velocity, and step counting",
-      "Multiple communication interfaces (PC, SPI, UART) for easy integration",
-    ],
-    "applications": [
-      "Physics Experiments – Pendulum motion, harmonic oscillation, gravity, and acceleration studies",
-      "Step Counting – Pedometer creation for detecting and counting steps",
-      "Velocity Measurement – Track acceleration over time and calculate velocity",
-      "Speed Monitoring – Real-time speed measurement using accelerometer data",
-      "Environmental Monitoring – Measure motion/vibration data for STEM and IoT projects",
-    ],
-    "specifications": [
-      "Controller: Nordic nRF52832 SoC, ARM Cortex-M4F, 64 MHz",
-      "Memory: 512 KB Flash, 64 KB RAM",
-      "Accelerometer: LIS3DH, 3-axis, ±2g/±4g/±8g/±16g, 12-bit resolution",
-      "Wireless: Bluetooth Low Energy (BLE 4.2 / 5.0 compatible)",
-      "Interfaces: PC, SPI, UART",
-      "Operating Voltage: 1.7 V – 3.6 V",
-      "Form Factor: Compact, battery-powered design for portable use",
-      "Use Case: Suitable for STEM education, wearable projects, and IoT applications",
-    ],
-    "imagePath": "assets/images/Actitvity.png",
-    "email": "krishnanpallavi63@gmail.com",
-    "datasheetKey": "ACTIVITY",
   },
   {
     "title": "Lux ",
