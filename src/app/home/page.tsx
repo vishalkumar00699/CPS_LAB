@@ -49,7 +49,7 @@ export default function Home() {
       platform: "Android"
     },
     {
-      title: "cloud Sense",
+      title: "Cloud Sense",
       desc: "Platform for real-time monitoring of weather and environmental sensor data.",
       path: "/assets/images/cloudsense.png",
       downloadLink: "https://play.google.com/store/apps/details?id=com.CloudSenseVis", // Replace with actual download link
@@ -275,20 +275,20 @@ export default function Home() {
                 <div className="h-56 overflow-hidden bg-[#EAEAEA] flex items-center justify-center p-4">
                   <img src={app.path} alt={app.title} className="max-h-full max-w-full object-contain rounded-md shadow-sm group-hover:scale-105 transition-transform duration-500" />
                 </div>
-                <div className="p-6 flex-grow">
+                <div className="p-6 flex-grow flex flex-col">
                   <div className="flex items-start justify-between mb-2">
                     <h3 className="font-headline font-bold text-xl text-white">{app.title}</h3>
                     <span className="text-xs bg-primary/20 text-primary px-2 py-1 rounded-full font-mono">
                       {app.platform}
                     </span>
                   </div>
-                  <p className="font-body text-sm text-on-surface-variant mb-4">{app.desc}</p>
+                  <p className="font-body text-sm text-on-surface-variant mb-6">{app.desc}</p>
 
                   {/* Download Button */}
                   <Link
                     href={app.downloadLink}
                     download
-                    className="inline-flex items-center gap-2 bg-primary/20 hover:bg-primary/30 border border-primary/30 text-primary px-4 py-2 rounded-lg transition-all group/btn w-full justify-center mt-2"
+                    className="mt-auto inline-flex items-center gap-2 bg-primary/20 hover:bg-primary/30 border border-primary/30 text-primary px-4 py-2 rounded-lg transition-all group/btn w-full justify-center"
                   >
                     <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>
                       download

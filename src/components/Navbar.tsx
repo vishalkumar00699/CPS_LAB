@@ -33,7 +33,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 w-full z-50 glass-nav shadow-[0_8px_32px_0_rgba(180,197,255,0.06)] border-b border-white/5">
-      <div className="flex items-center px-8 py-4 max-w-7xl mx-auto font-headline font-medium tracking-tight">
+      <div className="flex items-center px-4 sm:px-6 lg:px-8 py-4 max-w-7xl mx-auto font-headline font-medium tracking-tight">
         {/* LEFT: Logo */}
         <div className="flex-1 flex items-center">
           <Link href="/home" className="flex items-center gap-2">
@@ -51,7 +51,7 @@ export default function Navbar() {
         </div>
 
         {/* CENTER: Navigation Links */}
-        <div className="hidden md:flex flex-none items-center space-x-6">
+        <div className="hidden lg:flex flex-none items-center space-x-2 xl:space-x-6">
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
             return (
@@ -59,8 +59,8 @@ export default function Navbar() {
                 key={link.name}
                 href={link.path}
                 className={`transition-all rounded-full px-4 py-2 text-sm font-bold uppercase tracking-wide ${isActive
-                    ? 'text-primary bg-primary/10'
-                    : 'text-on-surface-variant hover:text-white hover:bg-white/5'
+                  ? 'text-primary bg-primary/10'
+                  : 'text-on-surface-variant hover:text-white hover:bg-white/5'
                   }`}
               >
                 {link.name}
@@ -80,7 +80,7 @@ export default function Navbar() {
 
         {/* RIGHT: User Actions */}
         <div className="flex-1 flex items-center justify-end gap-3">
-          <div className="hidden md:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
             {user ? (
               <div className="flex items-center gap-4">
                 <span className="text-xs font-label text-on-surface-variant hidden lg:inline uppercase tracking-tighter opacity-70">
@@ -101,7 +101,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle (Always Right) */}
-          <div className="md:hidden flex items-center gap-4">
+          <div className="lg:hidden flex items-center gap-4">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="text-slate-600 dark:text-white p-2"
@@ -118,7 +118,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-nav border-t border-white/10 overflow-hidden"
+            className="lg:hidden glass-nav border-t border-white/10 overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-2">
               {navLinks.map((link) => {
@@ -128,8 +128,8 @@ export default function Navbar() {
                     key={link.name}
                     href={link.path}
                     className={`block px-4 py-3 rounded-xl text-base font-bold transition-colors ${isActive
-                        ? 'text-primary bg-primary/10'
-                        : 'text-on-surface-variant hover:text-white hover:bg-white/5'
+                      ? 'text-primary bg-primary/10'
+                      : 'text-on-surface-variant hover:text-white hover:bg-white/5'
                       }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
