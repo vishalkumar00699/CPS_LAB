@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 
 // Shared data
 const stats = [
-  { icon: 'science', count: 26, label: 'Established CPS Labs', suffix: '' },
+  { icon: 'science', count: 27, label: 'Established CPS Labs', suffix: '' },
   { icon: 'school', count: 24, label: 'CPS Lab Trainings', suffix: '+' },
   { icon: 'groups', count: 400, label: 'Faculty Trained', suffix: '+' },
   { icon: 'psychology', count: 800, label: 'Students Trained', suffix: '+' },
@@ -13,7 +13,16 @@ const stats = [
 
 const workshops = [
   {
-    'title': "hands-on Cyber-Physical Systems (CPS) training at MIT-WPU PUNE.",
+    'title': "Hands-on Cyber-Physical Systems (CPS) training at GPC KOTKAPURA.",
+    'description':
+        "iHub – AWaDH @ IIT Ropar conducted a hands-on Cyber-Physical Systems (CPS) training at GPC KOTKAPURA.",
+    'image': 'assets/images/gpc.jpeg',
+    'location': 'GPC KOTKAPURA',
+    'date': 'APRIL 10',
+    'participants': '',
+  },
+  {
+    'title': "Hands-on Cyber-Physical Systems (CPS) training at MIT-WPU PUNE.",
     'description':
         "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on Cyber-Physical Systems (CPS) training at MIT-WPU PUNE.",
     'image': 'assets/images/MIT.jpeg',
@@ -22,7 +31,7 @@ const workshops = [
     'participants': '',
   },
   {
-    'title': "hands-on Cyber-Physical Systems (CPS) training at SBPUAT, Meerut.",
+    'title': "Hands-on Cyber-Physical Systems (CPS) training at SBPUAT, Meerut.",
     'description':
         "iHub – AWaDH @ IIT Ropar conducted a hands-on CPS training at Sardar Vallabhbhai Patel University of Agriculture and Technology, Meerut.",
     'image': 'assets/images/SBPUAT.jpeg',

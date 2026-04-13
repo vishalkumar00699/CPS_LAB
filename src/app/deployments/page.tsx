@@ -160,6 +160,12 @@ const deployments = [
     "title": "Deployment 26",
     "description": "AWaDH CPS Lab launched at NIT Sikkim",
     "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 26th CPS Lab at NIT Sikkim",
+  },
+  {
+    "image": "assets/images/27.jpeg",
+    "title": "Deployment 27",
+    "description": "AWaDH CPS Lab launched at GPC KOTKAPURA",
+    "longDescription": "Indian Institute of Technology, Ropar Expands Deep-Tech Footprint with 27th CPS Lab at GPC KOTKAPURA",
   }
 ];
 
