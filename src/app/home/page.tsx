@@ -39,7 +39,7 @@ export default function Home() {
       desc: "Real-time robust data visualization with IoT bounds.",
       path: "/assets/images/serialmonitor.jpeg",
       downloadLink: "https://iot-serial-communication-app.s3.us-east-1.amazonaws.com/Serial+Monitor+Setup+1.0.0+(1).exe", // Replace with actual download link
-      platform: "Android"
+      platform: ".exe"
     },
     {
       title: "BLE Sense",

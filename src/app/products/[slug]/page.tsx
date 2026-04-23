@@ -8,6 +8,7 @@ import { fetchAllRequests, requestDocumentAccess, fetchUserAccess } from '@/lib/
 import { downloadDocument, downloadFileFromUrl } from '@/lib/api/download';
 import { SENSOR_FILES } from '@/data/downloads';
 import { AccessRequest } from '@/types/admin';
+import ModelViewer from '@/components/ModelViewer';
 
 export default function ProductDetailsPage({ params }: { params: { slug: string } }) {
   const { user } = useAuth();
@@ -143,7 +144,7 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
   };
 
   const handleEnquire = () => {
-    const recipient = (sensor as any).email || 'krishnanpallavi63@gmail.com';
+    const recipient = (sensor as any).email || 'Vikash.hardwareengineer@ihub-awadh.in';
     const subject = "Product Enquiry";
     const body = `Hello, I am interested in your ${productDisplayName} product.`;
     
@@ -320,13 +321,19 @@ export default function ProductDetailsPage({ params }: { params: { slug: string 
 
         {/* Hero Section */}
         <div className="flex flex-col lg:flex-row gap-16 items-start mb-24">
-          <div className="w-full lg:w-1/2 bg-gradient-to-br from-surface-container to-surface rounded-3xl p-12 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group">
+          <div className="w-full lg:w-1/2 bg-gradient-to-br from-gray-400 to-gray-500 rounded-3xl p-12 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative group min-h-[700px] flex items-center justify-center">
              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-3xl pointer-events-none"></div>
-             <img 
-               src={`/${sensor.imagePath}`} 
-               alt={productDisplayName}
-               className="w-full h-auto object-contain max-h-[500px] transform group-hover:scale-105 transition-transform duration-700"
-             />
+             {sensor.imagePath.toLowerCase().endsWith('.glb') || sensor.imagePath.toLowerCase().endsWith('.gltf') ? (
+               <div className="absolute inset-0 p-8">
+                 <ModelViewer modelPath={sensor.imagePath} autoRotate={true} />
+               </div>
+             ) : (
+               <img 
+                 src={`/${sensor.imagePath}`} 
+                 alt={productDisplayName}
+                 className="w-full h-auto object-contain max-h-[500px] transform group-hover:scale-105 transition-transform duration-700"
+               />
+             )}
           </div>
           
           <div className="w-full lg:w-1/2 flex flex-col justify-center">

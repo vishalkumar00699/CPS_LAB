@@ -27,7 +27,22 @@ export default function LoginPage() {
   const [confirmationCode, setConfirmationCode] = useState('');
   const [authStep, setAuthStep] = useState<'LOGIN_SIGNUP' | 'CONFIRM_SIGNUP' | 'FORGOT_PASSWORD' | 'CONFIRM_FORGOT_PASSWORD'>('LOGIN_SIGNUP');
   
-  const { checkUserSession } = useAuth();
+  const { user, isLoading: authLoading, checkUserSession } = useAuth();
+  
+  useEffect(() => {
+    if (!authLoading && user) {
+      router.push('/home');
+    }
+  }, [user, authLoading, router]);
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-surface flex flex-col items-center justify-center p-6">
+        <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-4"></div>
+        <p className="text-white font-label tracking-widest uppercase text-sm animate-pulse">Initializing Session</p>
+      </div>
+    );
+  }
 
   const toggleMode = () => {
     setIsLogin(!isLogin);

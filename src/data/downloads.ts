@@ -1,4 +1,3 @@
-
 export const SENSOR_FILES: Record<string, Record<string, string>> = {
   "DataLogger": {
     "datasheet": "assets/pdfs/Data_logger_datasheet.pdf",

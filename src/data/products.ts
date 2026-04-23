@@ -35,7 +35,7 @@ export const allSensors = [
       "512KB RAM +1MB Flash",
     ],
     "imagePath": "assets/images/blegateway.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "Gateway",
   },
   // wind
@@ -43,7 +43,7 @@ export const allSensors = [
     "title": "Ultrasonic ",
     "highlightText": "Anemometer",
     "subtitle":
-        "Ultrasonic Anemometer for precise wind speed and wind direction",
+      "Ultrasonic Anemometer for precise wind speed and wind direction",
     "bannerPoints": [
       "Accurate wind monitoring",
       "Real time speed and direction measurement",
@@ -72,10 +72,10 @@ export const allSensors = [
       "Heating option (-40℃ to +70℃)",
     ],
     "imagePath": "assets/images/ultrasonic.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "WindSensor",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Wind_Sensor_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Wind_Sensor_UI",
   },
   // rain
   {
@@ -109,13 +109,13 @@ export const allSensors = [
       "Equipped with reed switch or magnetic sensor for tip detection",
       "Data Output: Number of tips × Resolution = Total Rainfall",
     ],
-    "imagePath": "assets/images/gauge.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "imagePath": "assets/models/Rain Gauge .glb",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "RainGauge",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Rain_Gauge_Analog_Read",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Rain_Gauge_Analog_Read",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Rain_Gauge_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Rain_Gauge_UI",
   },
 
   {
@@ -156,12 +156,12 @@ export const allSensors = [
       "LUX Accuracy:±3%",
     ],
     "imagePath": "assets/images/luxpressure.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "ARTH",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Weather_Sheild_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Weather_Sheild_UI",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Weather_shield_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Weather_shield_UI",
   },
 
   {
@@ -208,15 +208,14 @@ export const allSensors = [
       "Operating Temperature: −20°C to +85°C",
     ],
     "imagePath": "assets/images/soil.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "Soil",
   },
-
   {
     "title": "Activity/Vibration",
     "highlightText": "Monitor Kit",
     "subtitle":
-        "Real-time motion and environmental data tracker for STEM and IoT projects",
+      "Real-time motion and environmental data tracker for STEM and IoT projects",
     "bannerPoints": [
       "3-axis accelerometer for real-time motion tracking",
       "Bluetooth Low Energy (BLE) connectivity for mobile and PC",
@@ -246,8 +245,8 @@ export const allSensors = [
       "Form Factor: Compact, battery-powered design for portable use",
       "Use Case: Suitable for STEM education, wearable projects, and IoT applications",
     ],
-    "imagePath": "assets/images/Actitvity.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "imagePath": "assets/models/cattle logger .glb",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "ACTIVITY",
   },
 
@@ -255,7 +254,7 @@ export const allSensors = [
     "title": "Data",
     "highlightText": "Logger",
     "subtitle":
-        "High-Performance LTE IoT Board with Built-in GPS & Solar Power",
+      "High-Performance LTE IoT Board with Built-in GPS & Solar Power",
     "bannerPoints": [
       "Powered by Quectel EC200U LTE Cat 1 Module",
       "Integrated LTE and GPS Antennas for Cloud Connectivity",
@@ -286,7 +285,7 @@ export const allSensors = [
       "Power Management: MPPT solar charging via CN3791, Li-ion battery, and USB-C input",
     ],
     "imagePath": "assets/images/dataloggerrender.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "DataLogger",
   },
 
@@ -323,20 +322,20 @@ export const allSensors = [
       "Accuracy: ±0.5 °C (0 °C to +85 °C), ±0.5 °C (-40 °C to +125 °C)",
     ],
     "imagePath": "assets/images/stts751.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "STTS751",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/STTS751_Sensor",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/STTS751_Sensor",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Stts751_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Stts751_UI",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/STTS751_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/STTS751_UI",
   },
   {
     "title": "LIS3DH",
     "highlightText": "Motion Sensor",
     "subtitle":
-        "Compact and efficient accelerometer for motion detection and orientation sensing",
+      "Compact and efficient accelerometer for motion detection and orientation sensing",
     "bannerPoints": [
       "Ultra-low power 3-axis accelerometer for battery-powered devices",
       "Supports I2C and SPI digital interfaces",
@@ -371,14 +370,14 @@ export const allSensors = [
       "I2C logic: Address jumper for 0x18 or 0x19, pull-up enable for VCC",
     ],
     "imagePath": "assets/images/lis3dh.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "LIS3DH",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/LIS3DH_Sensor/lis3dhSensor",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/LIS3DH_Sensor/lis3dhSensor",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Lis3dh_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Lis3dh_UI",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/LIS3DH_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/LIS3DH_UI",
   },
   {
     "title": "W25Q16 / W25Q32",
@@ -414,10 +413,10 @@ export const allSensors = [
       "Integrated security features – OTP area, block protection, and unique 64-bit ID",
     ],
     "imagePath": "assets/images/memory.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "W25QXX",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/MX25r6435_and_W25q16dv_SPI_FLash",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/MX25r6435_and_W25q16dv_SPI_FLash",
   },
   {
     "title": "Buzzer",
@@ -452,18 +451,18 @@ export const allSensors = [
       "Compact design optimized for embedded and portable devices",
     ],
     "imagePath": "assets/images/buzzer.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "BUZZER",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Buzzer",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Buzzer",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Buzzer_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Buzzer_UI",
   },
   {
     "title": "Relay",
     "highlightText": "Electrical Switch",
     "subtitle":
-        "Electromagnetically operated switch for automation and control",
+      "Electromagnetically operated switch for automation and control",
     "bannerPoints": [
       "Electrically operated switch with multiple contacts",
       "Works on electromagnetic attraction principle",
@@ -492,18 +491,18 @@ export const allSensors = [
       "Electrical Life: ≥100,000 operations",
     ],
     "imagePath": "assets/images/relay.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "RELAY",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Relay",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Relay",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/relay_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/relay_UI",
   },
   {
     "title": "Bluetooth Low Energyt",
     "highlightText": "Development Kit",
     "subtitle":
-        "Multi-protocol wireless prototyping kit for IoT and smart devices",
+      "Multi-protocol wireless prototyping kit for IoT and smart devices",
     "bannerPoints": [
       "Supports Bluetooth Low Energy, Mesh, ANT, and 2.4 GHz",
       "Arduino Uno Rev. 3 compatible for prototyping",
@@ -546,18 +545,18 @@ export const allSensors = [
       "Operating Conditions: -40°C to +85°C (industrial grade)",
     ],
     "imagePath": "assets/images/ble_dev_kit.jpg",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "BLEKIT",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Blink_Led/Led_Blink",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Blink_Led/Led_Blink",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Led_Blink_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Led_Blink_UI",
   },
   {
     "title": "BLE",
     "highlightText": "Node",
     "subtitle":
-        "Advanced Bluetooth LE solution for IoT and wearable applications",
+      "Advanced Bluetooth LE solution for IoT and wearable applications",
     "bannerPoints": [
       "Equipped with NRF52832 microcontroller",
       "Supports Bluetooth LE and proprietary 2.4 GHz",
@@ -588,7 +587,7 @@ export const allSensors = [
       "Operating voltage range: 1.7 V - 3.6 V",
     ],
     "imagePath": "assets/images/bleNode.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "BLENODE",
   },
   {
@@ -627,14 +626,14 @@ export const allSensors = [
       "Enhanced Workflow: Breakpoint control and stepwise debugging for efficiency",
     ],
     "imagePath": "assets/images/programmer.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "FLASHTOOL",
   },
   {
     "title": "BME680",
     "highlightText": " Temperature, Humidity, Pressure and Gas Sensor",
     "subtitle":
-        "Compact 4-in-1 environmental sensor for IoT and air quality monitoring",
+      "Compact 4-in-1 environmental sensor for IoT and air quality monitoring",
     "bannerPoints": [
       "Integrated 4-in-1 sensing: gas, pressure, humidity, temperature",
       "Supports I2C and SPI digital interfaces",
@@ -667,20 +666,20 @@ export const allSensors = [
       "Pressure Sensor: RMS noise 0.12 Pa (~1.7 cm), offset coefficient ±1.3 Pa/K",
     ],
     "imagePath": "assets/images/bme680.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "BME680",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/BME680_Sensor",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/BME680_Sensor",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Bme680_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Bme680_UI",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Bme680_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/Bme680_UI",
   },
   {
     "title": "Lux ",
     "highlightText": "Sensor",
     "subtitle":
-        "16-bit resolution sensor for consumer and industrial applications",
+      "16-bit resolution sensor for consumer and industrial applications",
     "bannerPoints": [
       "Integrated ambient light and proximity sensing",
       "High sensitivity for accurate light and object detection",
@@ -711,18 +710,18 @@ export const allSensors = [
       "Form Factor: Miniature package (6.8 × 3.0 × 2.5 mm)",
     ],
     "imagePath": "assets/images/lux.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "LUX",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/VCNL4040_LuxSensor",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/VCNL4040_LuxSensor",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/vcnlLuxSensor_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/vcnlLuxSensor_UI",
   },
   {
     "title": "Groove ",
     "highlightText": "Shield",
     "subtitle":
-        "Easy integration of sensors, actuators, and inputs for rapid IoT prototyping",
+      "Easy integration of sensors, actuators, and inputs for rapid IoT prototyping",
     "bannerPoints": [
       "Plug-and-play modular system for rapid prototyping",
       "Standardized Grove 4-pin interface for sensors and modules",
@@ -753,14 +752,14 @@ export const allSensors = [
       "Use Case: Ideal for rapid IoT prototyping and educational projects",
     ],
     "imagePath": "assets/images/groove.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "GROOVE",
   },
   {
     "title": "TLV493D",
     "highlightText": "3D Magnetic Sensor",
     "subtitle":
-        "High precision Hall-effect sensor for accurate 3D magnetic field measurement",
+      "High precision Hall-effect sensor for accurate 3D magnetic field measurement",
     "bannerPoints": [
       "True 3D magnetic sensing (X, Y, Z axes)",
       "Compact & ultra-low power design",
@@ -787,12 +786,12 @@ export const allSensors = [
       "Current Consumption: ~10 μA (Ultra Low-Power Mode)",
     ],
     "imagePath": "assets/images/tlv.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "TLV",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Tlv493d_Magnetometer",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Tlv493d_Magnetometer",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Tlv493D_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Tlv493D_UI",
   },
   {
     "title": "TOF VL53L0X",
@@ -826,20 +825,20 @@ export const allSensors = [
       "Low Power Design: Optimized for energy-efficient applications",
     ],
     "imagePath": "assets/images/vl5.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "VL",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/TOFVl53l0x_Sensor",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/TOFVl53l0x_Sensor",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/TofVl53Lox_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/TofVl53Lox_UI",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/TOFVl53l0x_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/TOFVl53l0x_UI",
   },
   {
     "title": "UV LTR-390 ",
     "highlightText": "Light Sensor",
     "subtitle":
-        "Ideal for UV index monitoring, wearables, IoT, and healthcare applications",
+      "Ideal for UV index monitoring, wearables, IoT, and healthcare applications",
     "bannerPoints": [
       "Dual sensing capability for UV and ambient light",
       "Ultra-low power consumption (~1.5 µA standby)",
@@ -868,20 +867,20 @@ export const allSensors = [
       "Communication Support: Multiple I²C addresses for flexible integration",
     ],
     "imagePath": "assets/images/ltr390.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "UVLTR",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/UVLtr390_Sensor",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/blob/main/UVLtr390_Sensor",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/UvLtr390_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/UvLtr390_UI",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/uvLtr390_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/uvLtr390_UI",
   },
   {
     "title": "Linear Magnetic Hall",
     "highlightText": "Sensor",
     "subtitle":
-        "Detects magnetic fields with digital and analog outputs for automotive, industrial, and consumer applications",
+      "Detects magnetic fields with digital and analog outputs for automotive, industrial, and consumer applications",
     "bannerPoints": [
       "Wide voltage range operation (3.3 V – 24 V)",
       "Adjustable sensitivity with potentiometer",
@@ -914,20 +913,20 @@ export const allSensors = [
       "Hysteresis: Few % of magnetic range; Linearity: Defined as % of full-scale output",
     ],
     "imagePath": "assets/images/halleffect.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "HALL",
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Hall_Effect_Sensor",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/Hall_Effect_Sensor",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Hall_Effect_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Hall_Effect_UI",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/hall_effect_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/hall_effect_UI",
   },
   {
     "title": "InfraRed ",
     "highlightText": "Sensor",
     "subtitle":
-        "Detects infrared radiation emitted by objects, supporting motion detection, temperature measurement, and control systems",
+      "Detects infrared radiation emitted by objects, supporting motion detection, temperature measurement, and control systems",
     "bannerPoints": [
       "Detects infrared radiation for multiple applications",
       "Supports motion, temperature, and remote-control sensing",
@@ -960,16 +959,16 @@ export const allSensors = [
       "Operating Temperature: -40 °C to +85 °C",
     ],
     "imagePath": "assets/images/ir_sensor.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "IR",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/IR_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/IR_UI",
   },
   {
     "title": "SHT-40",
     "highlightText": "Temperature and Humidity Sensor",
     "subtitle":
-        "High-accuracy digital humidity and temperature sensor with ultra-low power operation ",
+      "High-accuracy digital humidity and temperature sensor with ultra-low power operation ",
     "bannerPoints": [
       "Measures humidity (±1.8 %RH) and temperature (±0.2 °C) via I²C interface",
       "Operates from 0–100 %RH and –40 °C to +125 °C range",
@@ -998,21 +997,21 @@ export const allSensors = [
       "Default I²C Address: 0x44",
     ],
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/SHT40",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/SHT40",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Sht40_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Sht40_UI",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/sht40_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/sht40_UI",
 
     "imagePath": "assets/images/sht40render.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "SHT40",
   },
   {
     "title": "Arduino Based ",
     "highlightText": "Robotic Kit",
     "subtitle":
-        "Versatile Arduino Nano-based kit with motor drivers, Bluetooth, and sensor interfaces",
+      "Versatile Arduino Nano-based kit with motor drivers, Bluetooth, and sensor interfaces",
     "bannerPoints": [
       "Built-in Arduino Nano (ATmega328P) with L293D motor driver",
       "Supports multiple communication interfaces: Bluetooth, I²C, and UART",
@@ -1041,14 +1040,14 @@ export const allSensors = [
       "Protection: Reverse-polarity (SS34 diode) and overcurrent protection",
     ],
     "imagePath": "assets/images/robotickitrender.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "ArduinoRoboticKit",
   },
   {
     "title": "nRF52832-Based ",
     "highlightText": "Robotic Kit",
     "subtitle":
-        "High-performance Bluetooth 5.0 robotic kit with motor drivers, OLED display, and sensor support",
+      "High-performance Bluetooth 5.0 robotic kit with motor drivers, OLED display, and sensor support",
     "bannerPoints": [
       "Powered by ARM Cortex-M4F MCU (nRF52832) with Bluetooth 5.0",
       "Integrated L293D motor driver for smooth motor control",
@@ -1081,7 +1080,7 @@ export const allSensors = [
       "Extras: Onboard buzzer, reset button, and LEDs for real-time feedback",
     ],
     "imagePath": "assets/images/nrf52832_robotickit.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "nRF52832RoboticKit",
   },
   {
@@ -1122,21 +1121,21 @@ export const allSensors = [
       "Power Consumption: <1mA (typical, ultra-low power)",
     ],
     "nreCodeLink":
-        "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/STS30",
+      "https://github.com/sksuman14/nRF_All_Sensors_Codes/tree/main/All_Temperature_Sensors/STS30",
     "quecCodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Sts30_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_Quecpython_UI_Code/tree/main/Sts30_UI",
     "nrfUICodeLink":
-        "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/sts30_UI",
+      "https://github.com/sksuman14/Cps_Lab_All_nRF_UI_Code/tree/main/sts30_UI",
 
     "imagePath": "assets/images/sts30_dis.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "STS30DIS",
   },
   {
     "title": "ModView nRF52833 BLE ",
     "highlightText": "+ RS485 Data Logger",
     "subtitle":
-        "Low-power embedded board for IoT communication, data logging, telemetry applications",
+      "Low-power embedded board for IoT communication, data logging, telemetry applications",
     "bannerPoints": [
       "Features Nordic nRF52833 SoC with BLE 5.1 and RS485/422 communication",
       "Supports SD card storage, USB-C, and Li-ion battery management",
@@ -1171,7 +1170,7 @@ export const allSensors = [
       "Operating Temperature: -40°C to +85°C",
     ],
     "imagePath": "assets/images/modview_nrf52833.png",
-    "email": "krishnanpallavi63@gmail.com",
+    "email": "Vikash.hardwareengineer@ihub-awadh.in",
     "datasheetKey": "MODVIEWNRF52833",
   },
 ];

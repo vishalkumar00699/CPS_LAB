@@ -1,9 +1,50 @@
 'use client';
 
-import { motion, Variants, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { useState, useRef } from 'react';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform, useInView } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { allSensors } from '@/data/products';
+import ModelViewer from '@/components/ModelViewer';
+
+/**
+ * LazyModel handles viewport-aware loading of 3D models.
+ * It prevents the browser from loading multiple heavy GL contexts at once.
+ */
+function LazyModel({ path }: { path: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "200px" });
+  const [canRender, setCanRender] = useState(false);
+
+  useEffect(() => {
+    if (isInView) {
+      // Small timeout to prioritize UI responsiveness
+      const timer = setTimeout(() => {
+        ModelViewer.preload(path);
+        setCanRender(true);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isInView, path]);
+
+  return (
+    <div ref={containerRef} className="w-full h-full relative">
+      {canRender ? (
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ duration: 0.6 }}
+          className="w-full h-full"
+        >
+          <ModelViewer modelPath={path} />
+        </motion.div>
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center bg-white/5 animate-pulse">
+           <span className="material-symbols-outlined text-white/10 text-4xl">3d_rotation</span>
+        </div>
+      )}
+    </div>
+  );
+}
 
 function TiltCard({ children, href }: { children: React.ReactNode, href: string }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -123,13 +164,14 @@ export default function ProductsPage() {
         <section className="max-w-7xl mx-auto px-8">
           {filteredItems.length === 0 ? (
             <motion.div
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }}
               className="text-center py-20 text-on-surface-variant font-body text-xl bg-surface-container/30 rounded-3xl border border-white/5"
             >
               No products match your search. Try different keywords.
             </motion.div>
           ) : (
-            <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 md:gap-10">
               <AnimatePresence mode="popLayout">
                 {displayedItems.map((item, index) => {
                   const fullTitle = `${item.title.trim()} ${item.highlightText.trim()}`.replace(/\s+/g, ' ');
@@ -137,18 +179,23 @@ export default function ProductsPage() {
 
                   return (
                     <TiltCard key={slug + index} href={`/products/${slug}`}>
-                      <div className="h-60 bg-gradient-to-br from-surface-container to-[#0a0a0a] relative overflow-hidden flex items-center justify-center p-8 transition-colors">
-                        {/* Dynamic decorative backdrop inside the image area */}
+                      <div className="h-60 bg-gradient-to-br from-gray-400 to-gray-500 relative overflow-hidden flex items-center justify-center transition-colors">
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                        <img
-                          src={`/${item.imagePath}`}
-                          alt={fullTitle}
-                          className="w-full h-full object-contain transform group-hover:scale-110 group-hover:rotate-2 transition-transform duration-700 drop-shadow-xl relative z-10"
-                        />
+                        {item.imagePath.toLowerCase().endsWith('.glb') || item.imagePath.toLowerCase().endsWith('.gltf') ? (
+                          <div className="absolute inset-0 z-10">
+                            <LazyModel path={item.imagePath} />
+                          </div>
+                        ) : (
+                          <img
+                            src={`/${item.imagePath}`}
+                            alt={fullTitle}
+                            className="w-full h-full object-contain transform group-hover:scale-110 group-hover:rotate-2 transition-transform duration-700 drop-shadow-xl relative z-10"
+                          />
+                        )}
                       </div>
                       <div
                         className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container to-[#111827] relative z-20"
-                        style={{ transform: "translateZ(40px)" }} // Max lift for text
+                        style={{ transform: "translateZ(40px)" }}
                       >
                         <h3 className="font-headline text-xl font-bold text-white mb-3 line-clamp-2 leading-tight drop-shadow-sm">
                           {fullTitle}
@@ -164,12 +211,10 @@ export default function ProductsPage() {
                   );
                 })}
               </AnimatePresence>
-            </motion.div>
+            </div>
           )}
-
         </section>
       </main>
-
     </div>
   );
 }

@@ -11,12 +11,22 @@ const stats = [
   { icon: 'psychology', count: 800, label: 'Students Trained', suffix: '+' },
 ];
 
+const BASE_URL = "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com";
+
 const workshops = [
+  {
+    "title": "Strengthening Punjab’s Innovation Ecosystem Through CPS Lab at ITI Ropar",
+    "description": "iHub – AWaDH @ IIT Ropar inaugurated a CPS Lab at Government ITI, Ropar to promote deep-tech skilling, innovation-driven R&D, and entrepreneurship at the grassroots.",
+    "image": `${BASE_URL}/images/ITI_Ropar.jpeg`,
+    "location": "Government ITI, Ropar",
+    "date": "April 2026",
+    "participants": "20+ Students "
+  },
   {
     'title': "Hands-on Cyber-Physical Systems (CPS) training at GPC KOTKAPURA.",
     'description':
         "iHub – AWaDH @ IIT Ropar conducted a hands-on Cyber-Physical Systems (CPS) training at GPC KOTKAPURA.",
-    'image': 'assets/images/gpc.jpeg',
+    'image': `${BASE_URL}/images/gpc.jpeg`,
     'location': 'GPC KOTKAPURA',
     'date': 'APRIL 10',
     'participants': '',
@@ -25,7 +35,7 @@ const workshops = [
     'title': "Hands-on Cyber-Physical Systems (CPS) training at MIT-WPU PUNE.",
     'description':
         "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on Cyber-Physical Systems (CPS) training at MIT-WPU PUNE.",
-    'image': 'assets/images/MIT.jpeg',
+    'image': `${BASE_URL}/images/MIT.jpeg`,
     'location': 'MIT-WPU PUNE',
     'date': '',
     'participants': '',
@@ -34,7 +44,7 @@ const workshops = [
     'title': "Hands-on Cyber-Physical Systems (CPS) training at SBPUAT, Meerut.",
     'description':
         "iHub – AWaDH @ IIT Ropar conducted a hands-on CPS training at Sardar Vallabhbhai Patel University of Agriculture and Technology, Meerut.",
-    'image': 'assets/images/SBPUAT.jpeg',
+    'image': `${BASE_URL}/images/SBPUAT.jpeg`,
     'location': 'SBPUAT, Meerut.',
     'date': '',
     'participants': '',
@@ -43,7 +53,7 @@ const workshops = [
     'title': "Workshop Training on BLE & CPS at HRIT University, Ghaziabad.",
     'description':
         "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on BLE & Cyber-Physical Systems (CPS) training at HRIT University, Ghaziabad.",
-    'image': 'assets/images/HRIT.jpeg',
+    'image': `${BASE_URL}/images/HRIT.jpeg`,
     'location': 'HRIT University, Ghaziabad.',
     'date': '',
     'participants': '',
@@ -51,7 +61,7 @@ const workshops = [
   {
     title: "Empowering Students through IoT Training at AWaDH CPS Lab, NIT Delhi",
     description: "iHub – AWaDH @ IIT Ropar conducted a hands-on Internet of Things (IoT) training session at the AWaDH CPS Lab in NIT Delhi. Students explored IoT fundamentals and real-time applications.",
-    image: "assets/images/NIT_Delhi.png",
+    image: `${BASE_URL}/images/NIT_Delhi.png`,
     location: "NIT Delhi",
     date: "Mar 2023",
     participants: "45 Students",
@@ -59,7 +69,7 @@ const workshops = [
   {
     title: "Empowering Innovation: AI & IoT Workshop at AWaDH CPS Lab, NIT Jalandhar",
     description: "A two-day workshop on AI and IoT conducted under the AWaDH CPS Lab initiative at NIT Jalandhar, empowering students with hands-on learning.",
-    image: "assets/images/NIT_jalandhar.png",
+    image: `${BASE_URL}/images/NIT_jalandhar.png`,
     location: "NIT Jalandhar",
     date: "Feb 2023",
     participants: "60 Students",
@@ -67,7 +77,7 @@ const workshops = [
   {
     title: "Hands-On Learning: CPS Workshop at Chitkara University",
     description: "A two-day CPS Workshop at Chitkara University, engaging 19 students in hands-on learning and innovation.",
-    image: "assets/images/Chitkara_University.png",
+    image: `${BASE_URL}/images/Chitkara_University.png`,
     location: "Chitkara University",
     date: "Jan 2023",
     participants: "19 Students",
@@ -75,7 +85,7 @@ const workshops = [
   {
     title: "Empowering Northeast Youth: CPS Training for CCCT Sikkim at IIT Ropar",
     description: "A month-long hands-on CPS training for 30+ students from CCCT Sikkim hosted at IIT Ropar.",
-    image: "assets/images/CICU_Ludhiana.png",
+    image: `${BASE_URL}/images/CICU_Ludhiana.png`,
     location: "IIT Ropar",
     date: "Dec 2022",
     participants: "30+ Students",
@@ -83,7 +93,7 @@ const workshops = [
   {
     title: "AI Workshop on Sustainable Agriculture (PI-RAHI & iHub AWaDH)",
     description: "Workshop conducted at Panjab University focusing on AI for agriculture, health, and ecosystem resilience.",
-    image: "assets/images/PI-RAHI.png",
+    image: `${BASE_URL}/images/PI-RAHI.png`,
     location: "Panjab University",
     date: "Nov 2022",
     participants: "50 Participants",
@@ -91,7 +101,7 @@ const workshops = [
   {
     title: "Empowering Educators: Faculty Workshop on CPS at Thapar Institute",
     description: "A faculty development workshop on CPS processes and applications, conducted at Thapar University.",
-    image: "assets/images/Thapar_Institute.png",
+    image: `${BASE_URL}/images/Thapar_Institute.png`,
     location: "Thapar University",
     date: "Oct 2022",
     participants: "25 Faculty",
@@ -99,7 +109,7 @@ const workshops = [
   {
     title: "CPS Skilling with AI Workshop at Govt. Mahila Engineering College, Ajmer",
     description: "AI workshop conducted by iHub – AWaDH, training students in generative AI and CPS fundamentals.",
-    image: "assets/images/Ajmer.png",
+    image: `${BASE_URL}/images/Ajmer.png`,
     location: "Govt. Mahila College",
     date: "Sep 2022",
     participants: "40 Students",
@@ -107,7 +117,7 @@ const workshops = [
   {
     title: "Short-Term Course on IoT at NIT Delhi under AWaDH CPS Lab",
     description: "A short-term course on IoT covering sensors, gateways, and real-world IoT implementations.",
-    image: "assets/images/NIT_Delhi_Short.png",
+    image: `${BASE_URL}/images/NIT_Delhi_Short.png`,
     location: "NIT Delhi",
     date: "Aug 2022",
     participants: "35 Students",
@@ -115,7 +125,7 @@ const workshops = [
   {
     title: "CPS & IoT Training at CICU Ludhiana by iHub – AWaDH",
     description: "Hands-on training empowering 40+ participants with IoT, BLE, sensors, and automation skills.",
-    image: "assets/images/CICU_Ludhiana.png",
+    image: `${BASE_URL}/images/CICU_Ludhiana.png`,
     location: "CICU Ludhiana",
     date: "Jul 2022",
     participants: "40+ Participants",
@@ -123,7 +133,7 @@ const workshops = [
   {
     title: "National Science Day – Generative AI Workshop by AWaDH",
     description: "Conducted in collaboration with Terafac and NCSTC, focusing on Generative AI applications.",
-    image: "assets/images/National_Science_Day.png",
+    image: `${BASE_URL}/images/National_Science_Day.png`,
     location: "Multiple Locations",
     date: "Feb 2023",
     participants: "100+ Participants",
@@ -131,7 +141,7 @@ const workshops = [
   {
     title: "CPS & IoT Workshop at Baba Farid College",
     description: "A two-day workshop training 55+ students and 5 faculty members.",
-    image: "assets/images/Baba_Farid.png",
+    image: `${BASE_URL}/images/Baba_Farid.png`,
     location: "Baba Farid College",
     date: "Jun 2022",
     participants: "60 Participants",
@@ -139,7 +149,7 @@ const workshops = [
   {
     title: "Hands-on Training at NIT Delhi (BLE & 3D Printing)",
     description: "Two-day hands-on workshop training students on BLE Development Kits and 3D printing.",
-    image: "assets/images/BLE_3D.png",
+    image: `${BASE_URL}/images/BLE_3D.png`,
     location: "NIT Delhi",
     date: "May 2022",
     participants: "30 Students",
@@ -147,7 +157,7 @@ const workshops = [
   {
     title: "Workshop Training on BLE & 3D Printing at IIIT Una",
     description: "Training 35+ students in BLE applications, sensors, and rapid prototyping.",
-    image: "assets/images/IIIT_Una.png",
+    image: `${BASE_URL}/images/IIIT_Una.png`,
     location: "IIIT Una",
     date: "Apr 2022",
     participants: "35+ Students",
@@ -155,7 +165,7 @@ const workshops = [
   {
     title: "Hands-on CPS & BLE Training at Khalsa College, Amritsar",
     description: "Training 120+ students on CPS Lab modules, BLE tech, sensor applications, and gateway integration.",
-    image: "assets/images/Ajmer.png",
+    image: `${BASE_URL}/images/Ajmer.png`,
     location: "Khalsa College",
     date: "Mar 2022",
     participants: "120+ Students",
@@ -163,7 +173,7 @@ const workshops = [
   {
     title: "Hands-On Skilling and Applied Innovation in Haryana Through CPS Training Programme.",
     description: "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on CPS skilling programme at EPIC, Ambala College of Engineering.",
-    image: "assets/images/Haryana.jpg",
+    image: `${BASE_URL}/images/Haryana.jpg`,
     location: "EPIC, Ambala",
     date: " ",
     participants: "53 Students",
@@ -171,11 +181,11 @@ const workshops = [
   {
     title: "Strengthens CPS Capacity Through Advanced Training at HITS, Chennai",
     description: "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on Cyber-Physical Systems (CPS) training at HITS, Chennai.",
-    image: "assets/images/Chennai.jpg",
+    image: `${BASE_URL}/images/Chennai.jpg`,
     location: "HITS, Chennai",
     date: " ",
     participants: " ",
-  },
+  }
 ];
 
 // Reusable Counter Component
@@ -302,7 +312,7 @@ export default function TrainingAndWorkshopPage() {
 
                   <div className="h-56 relative overflow-hidden bg-[#111827]">
                     <img
-                      src={`/${workshop.image}`}
+                      src={workshop.image}
                       alt={workshop.title}
                       className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 mix-blend-screen"
                     />

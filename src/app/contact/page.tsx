@@ -90,7 +90,7 @@ export default function ContactPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <p className="font-body text-lg text-primary-light italic leading-relaxed relative z-10">
                   <strong className="block mb-2 font-headline not-italic text-white">Innovation Hub for Automation Technology (AWaDH)</strong>
-                  We're here to collaborate, innovate, and transform ideas into reality.
+                  We&apos;re here to collaborate, innovate, and transform ideas into reality.
                 </p>
               </div>
             </motion.div>
