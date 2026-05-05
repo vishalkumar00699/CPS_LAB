@@ -3,6 +3,7 @@
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import { useState, useEffect } from 'react';
 
 // Leaflet requires defining custom marker icons manually in Next.js builds
 const icon = L.icon({
@@ -43,9 +44,20 @@ const cpsLabs = [
 ];
 
 export default function IndiaMap() {
+  const [mapId, setMapId] = useState<string>('');
+
+  useEffect(() => {
+    // Generate a unique key on mount to force React to create a new DOM node
+    // This circumvents the StrictMode/Fast Refresh "Map container is already initialized" error.
+    setMapId(Date.now().toString());
+  }, []);
+
+  if (!mapId) return null;
+
   return (
     <div className="w-full h-full relative rounded-2xl overflow-hidden z-10 border border-white/5 shadow-[0_0_40px_rgba(0,0,0,0.5)]">
       <MapContainer 
+        key={mapId}
         center={[22.5937, 78.9629]} 
         zoom={4.3} 
         scrollWheelZoom={false}

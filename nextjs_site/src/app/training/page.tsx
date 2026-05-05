@@ -5,17 +5,63 @@ import { useEffect, useRef, useState } from 'react';
 
 // Shared data
 const stats = [
-  { icon: 'science', count: 22, label: 'Established CPS Labs', suffix: '' },
+  { icon: 'science', count: 28, label: 'Established CPS Labs', suffix: '' },
   { icon: 'school', count: 24, label: 'CPS Lab Trainings', suffix: '+' },
   { icon: 'groups', count: 400, label: 'Faculty Trained', suffix: '+' },
   { icon: 'psychology', count: 800, label: 'Students Trained', suffix: '+' },
 ];
 
+const BASE_URL = "https://cpslabhub-assets.s3.ap-south-1.amazonaws.com";
+
 const workshops = [
+  {
+    "title": "Strengthening Punjab’s Innovation Ecosystem Through CPS Lab at ITI Ropar",
+    "description": "iHub – AWaDH @ IIT Ropar inaugurated a CPS Lab at Government ITI, Ropar to promote deep-tech skilling, innovation-driven R&D, and entrepreneurship at the grassroots.",
+    "image": `${BASE_URL}/images/ITI_Ropar.jpeg`,
+    "location": "Government ITI, Ropar",
+    "date": "April 2026",
+    "participants": "20+ Students "
+  },
+  {
+    'title': "Hands-on Cyber-Physical Systems (CPS) training at GPC KOTKAPURA.",
+    'description':
+        "iHub – AWaDH @ IIT Ropar conducted a hands-on Cyber-Physical Systems (CPS) training at GPC KOTKAPURA.",
+    'image': `${BASE_URL}/images/gpc.jpeg`,
+    'location': 'GPC KOTKAPURA',
+    'date': 'APRIL 10',
+    'participants': '',
+  },
+  {
+    'title': "Hands-on Cyber-Physical Systems (CPS) training at MIT-WPU PUNE.",
+    'description':
+        "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on Cyber-Physical Systems (CPS) training at MIT-WPU PUNE.",
+    'image': `${BASE_URL}/images/MIT.jpeg`,
+    'location': 'MIT-WPU PUNE',
+    'date': '',
+    'participants': '',
+  },
+  {
+    'title': "Hands-on Cyber-Physical Systems (CPS) training at SBPUAT, Meerut.",
+    'description':
+        "iHub – AWaDH @ IIT Ropar conducted a hands-on CPS training at Sardar Vallabhbhai Patel University of Agriculture and Technology, Meerut.",
+    'image': `${BASE_URL}/images/SBPUAT.jpeg`,
+    'location': 'SBPUAT, Meerut.',
+    'date': '',
+    'participants': '',
+  },
+  {
+    'title': "Workshop Training on BLE & CPS at HRIT University, Ghaziabad.",
+    'description':
+        "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on BLE & Cyber-Physical Systems (CPS) training at HRIT University, Ghaziabad.",
+    'image': `${BASE_URL}/images/HRIT.jpeg`,
+    'location': 'HRIT University, Ghaziabad.',
+    'date': '',
+    'participants': '',
+  },
   {
     title: "Empowering Students through IoT Training at AWaDH CPS Lab, NIT Delhi",
     description: "iHub – AWaDH @ IIT Ropar conducted a hands-on Internet of Things (IoT) training session at the AWaDH CPS Lab in NIT Delhi. Students explored IoT fundamentals and real-time applications.",
-    image: "assets/images/NIT_Delhi.png",
+    image: `${BASE_URL}/images/NIT_Delhi.png`,
     location: "NIT Delhi",
     date: "Mar 2023",
     participants: "45 Students",
@@ -23,7 +69,7 @@ const workshops = [
   {
     title: "Empowering Innovation: AI & IoT Workshop at AWaDH CPS Lab, NIT Jalandhar",
     description: "A two-day workshop on AI and IoT conducted under the AWaDH CPS Lab initiative at NIT Jalandhar, empowering students with hands-on learning.",
-    image: "assets/images/NIT_jalandhar.png",
+    image: `${BASE_URL}/images/NIT_jalandhar.png`,
     location: "NIT Jalandhar",
     date: "Feb 2023",
     participants: "60 Students",
@@ -31,7 +77,7 @@ const workshops = [
   {
     title: "Hands-On Learning: CPS Workshop at Chitkara University",
     description: "A two-day CPS Workshop at Chitkara University, engaging 19 students in hands-on learning and innovation.",
-    image: "assets/images/Chitkara_University.png",
+    image: `${BASE_URL}/images/Chitkara_University.png`,
     location: "Chitkara University",
     date: "Jan 2023",
     participants: "19 Students",
@@ -39,7 +85,7 @@ const workshops = [
   {
     title: "Empowering Northeast Youth: CPS Training for CCCT Sikkim at IIT Ropar",
     description: "A month-long hands-on CPS training for 30+ students from CCCT Sikkim hosted at IIT Ropar.",
-    image: "assets/images/CICU_Ludhiana.png",
+    image: `${BASE_URL}/images/CICU_Ludhiana.png`,
     location: "IIT Ropar",
     date: "Dec 2022",
     participants: "30+ Students",
@@ -47,7 +93,7 @@ const workshops = [
   {
     title: "AI Workshop on Sustainable Agriculture (PI-RAHI & iHub AWaDH)",
     description: "Workshop conducted at Panjab University focusing on AI for agriculture, health, and ecosystem resilience.",
-    image: "assets/images/PI-RAHI.png",
+    image: `${BASE_URL}/images/PI-RAHI.png`,
     location: "Panjab University",
     date: "Nov 2022",
     participants: "50 Participants",
@@ -55,7 +101,7 @@ const workshops = [
   {
     title: "Empowering Educators: Faculty Workshop on CPS at Thapar Institute",
     description: "A faculty development workshop on CPS processes and applications, conducted at Thapar University.",
-    image: "assets/images/Thapar_Institute.png",
+    image: `${BASE_URL}/images/Thapar_Institute.png`,
     location: "Thapar University",
     date: "Oct 2022",
     participants: "25 Faculty",
@@ -63,7 +109,7 @@ const workshops = [
   {
     title: "CPS Skilling with AI Workshop at Govt. Mahila Engineering College, Ajmer",
     description: "AI workshop conducted by iHub – AWaDH, training students in generative AI and CPS fundamentals.",
-    image: "assets/images/Ajmer.png",
+    image: `${BASE_URL}/images/Ajmer.png`,
     location: "Govt. Mahila College",
     date: "Sep 2022",
     participants: "40 Students",
@@ -71,7 +117,7 @@ const workshops = [
   {
     title: "Short-Term Course on IoT at NIT Delhi under AWaDH CPS Lab",
     description: "A short-term course on IoT covering sensors, gateways, and real-world IoT implementations.",
-    image: "assets/images/NIT_Delhi_Short.png",
+    image: `${BASE_URL}/images/NIT_Delhi_Short.png`,
     location: "NIT Delhi",
     date: "Aug 2022",
     participants: "35 Students",
@@ -79,7 +125,7 @@ const workshops = [
   {
     title: "CPS & IoT Training at CICU Ludhiana by iHub – AWaDH",
     description: "Hands-on training empowering 40+ participants with IoT, BLE, sensors, and automation skills.",
-    image: "assets/images/CICU_Ludhiana.png",
+    image: `${BASE_URL}/images/CICU_Ludhiana.png`,
     location: "CICU Ludhiana",
     date: "Jul 2022",
     participants: "40+ Participants",
@@ -87,7 +133,7 @@ const workshops = [
   {
     title: "National Science Day – Generative AI Workshop by AWaDH",
     description: "Conducted in collaboration with Terafac and NCSTC, focusing on Generative AI applications.",
-    image: "assets/images/National_Science_Day.png",
+    image: `${BASE_URL}/images/National_Science_Day.png`,
     location: "Multiple Locations",
     date: "Feb 2023",
     participants: "100+ Participants",
@@ -95,7 +141,7 @@ const workshops = [
   {
     title: "CPS & IoT Workshop at Baba Farid College",
     description: "A two-day workshop training 55+ students and 5 faculty members.",
-    image: "assets/images/Baba_Farid.png",
+    image: `${BASE_URL}/images/Baba_Farid.png`,
     location: "Baba Farid College",
     date: "Jun 2022",
     participants: "60 Participants",
@@ -103,7 +149,7 @@ const workshops = [
   {
     title: "Hands-on Training at NIT Delhi (BLE & 3D Printing)",
     description: "Two-day hands-on workshop training students on BLE Development Kits and 3D printing.",
-    image: "assets/images/BLE_3D.png",
+    image: `${BASE_URL}/images/BLE_3D.png`,
     location: "NIT Delhi",
     date: "May 2022",
     participants: "30 Students",
@@ -111,7 +157,7 @@ const workshops = [
   {
     title: "Workshop Training on BLE & 3D Printing at IIIT Una",
     description: "Training 35+ students in BLE applications, sensors, and rapid prototyping.",
-    image: "assets/images/IIIT_Una.png",
+    image: `${BASE_URL}/images/IIIT_Una.png`,
     location: "IIIT Una",
     date: "Apr 2022",
     participants: "35+ Students",
@@ -119,7 +165,7 @@ const workshops = [
   {
     title: "Hands-on CPS & BLE Training at Khalsa College, Amritsar",
     description: "Training 120+ students on CPS Lab modules, BLE tech, sensor applications, and gateway integration.",
-    image: "assets/images/Ajmer.png",
+    image: `${BASE_URL}/images/Ajmer.png`,
     location: "Khalsa College",
     date: "Mar 2022",
     participants: "120+ Students",
@@ -127,7 +173,7 @@ const workshops = [
   {
     title: "Hands-On Skilling and Applied Innovation in Haryana Through CPS Training Programme.",
     description: "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on CPS skilling programme at EPIC, Ambala College of Engineering.",
-    image: "assets/images/Haryana.jpg",
+    image: `${BASE_URL}/images/Haryana.jpg`,
     location: "EPIC, Ambala",
     date: " ",
     participants: "53 Students",
@@ -135,11 +181,11 @@ const workshops = [
   {
     title: "Strengthens CPS Capacity Through Advanced Training at HITS, Chennai",
     description: "iHub – AWaDH @ IIT Ropar conducted a two-day hands-on Cyber-Physical Systems (CPS) training at HITS, Chennai.",
-    image: "assets/images/Chennai.jpg",
+    image: `${BASE_URL}/images/Chennai.jpg`,
     location: "HITS, Chennai",
     date: " ",
     participants: " ",
-  },
+  }
 ];
 
 // Reusable Counter Component
@@ -148,7 +194,7 @@ function AnimatedCounter({ to, suffix }: { to: number, suffix: string }) {
   const rounded = useTransform(count, Math.round);
 
   return (
-    <motion.span 
+    <motion.span
       viewport={{ once: true }}
       onViewportEnter={() => {
         animate(count, to, { duration: 2, ease: "easeOut" });
@@ -162,15 +208,6 @@ function AnimatedCounter({ to, suffix }: { to: number, suffix: string }) {
 }
 
 export default function TrainingAndWorkshopPage() {
-  const sliderRef = useRef<HTMLDivElement>(null);
-  const [sliderWidth, setSliderWidth] = useState(0);
-
-  useEffect(() => {
-    if (sliderRef.current) {
-      setSliderWidth(sliderRef.current.scrollWidth - sliderRef.current.offsetWidth);
-    }
-  }, []);
-
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
@@ -196,23 +233,23 @@ export default function TrainingAndWorkshopPage() {
         {/* Our Impact Section with Animated Counters */}
         <section className="bg-surface-container-low border-y border-white/5 py-24 mb-24 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-full h-[500px] bg-primary/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2"></div>
-          
+
           <div className="max-w-7xl mx-auto px-8 relative z-10">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               className="text-center mb-16"
             >
               <h1 className="font-headline text-5xl md:text-7xl font-bold leading-tight mb-6 tracking-tighter text-white drop-shadow-lg">
-                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Impact</span>
+                Our <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent [text-shadow:0_0_1px_rgba(255,255,255,0.3)]">Impact</span>
               </h1>
               <p className="font-body text-xl text-on-surface-variant font-medium max-w-2xl mx-auto">
                 Empowering minds through innovative training programs and state-of-the-art infrastructure.
               </p>
             </motion.div>
 
-            <motion.div 
+            <motion.div
               variants={containerVariants}
               initial="hidden"
               whileInView="show"
@@ -239,7 +276,7 @@ export default function TrainingAndWorkshopPage() {
         {/* Dynamic Draggable Slider for Workshops */}
         <section className="w-full relative py-10 overflow-hidden">
           <div className="max-w-7xl mx-auto px-8 mb-12">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -250,7 +287,7 @@ export default function TrainingAndWorkshopPage() {
                 Workshops & Trainings
               </h2>
             </motion.div>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -260,84 +297,64 @@ export default function TrainingAndWorkshopPage() {
             </motion.p>
           </div>
 
-          <div className="pl-8 md:pl-16 relative">
-            {/* Draggable Area */}
-            <motion.div 
-              ref={sliderRef}
-              className="w-full cursor-grab active:cursor-grabbing overflow-visible"
-            >
-              <motion.div 
-                drag="x"
-                dragConstraints={{ right: 0, left: -sliderWidth }}
-                dragElastic={0.1}
-                dragTransition={{ bounceStiffness: 100, bounceDamping: 20 }}
-                className="flex gap-8 pb-10 pr-20 w-max"
-              >
-                {workshops.map((workshop, i) => (
-                  <motion.div 
-                    key={i} 
-                    className="w-[300px] md:w-[400px] shrink-0 bg-surface-container rounded-[32px] border border-white/5 overflow-hidden flex flex-col group relative shadow-xl hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.6)] hover:-translate-y-2 hover:border-white/20 transition-all duration-500"
-                  >
-                    <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
-                    
-                    <div className="h-56 relative overflow-hidden bg-[#111827]">
-                      <img 
-                        src={`/${workshop.image}`} 
-                        alt={workshop.title} 
-                        className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 mix-blend-screen pointer-events-none"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/50 to-transparent"></div>
-                      
-                      {/* Floating Badges */}
-                      <div className="absolute top-4 left-4 bg-surface-container/80 backdrop-blur-md border border-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
-                        <span className="material-symbols-outlined text-[16px] text-primary">location_on</span>
-                        <span className="text-xs font-bold leading-none tracking-wide">{workshop.location}</span>
+          <div className="max-w-7xl mx-auto px-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+              {workshops.map((workshop, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % 3) * 0.1 }}
+                  className="bg-surface-container rounded-[32px] border border-white/5 overflow-hidden flex flex-col group relative shadow-xl hover:shadow-[0_20px_50px_-10px_rgba(0,0,0,0.6)] hover:-translate-y-2 hover:border-white/20 transition-all duration-500"
+                >
+                  <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+                  <div className="h-56 relative overflow-hidden bg-[#111827]">
+                    <img
+                      src={workshop.image}
+                      alt={workshop.title}
+                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 mix-blend-screen"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-surface-container via-surface-container/50 to-transparent"></div>
+
+                    {/* Floating Badges */}
+                    <div className="absolute top-4 left-4 bg-surface-container/80 backdrop-blur-md border border-white/10 text-white px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
+                      <span className="material-symbols-outlined text-[16px] text-primary">location_on</span>
+                      <span className="text-xs font-bold leading-none tracking-wide">{workshop.location}</span>
+                    </div>
+                    {workshop.date && workshop.date.trim() !== "" && (
+                      <div className="absolute top-4 right-4 bg-primary text-white px-4 py-2 rounded-full flex items-center shadow-[0_5px_15px_rgba(37,99,235,0.4)]">
+                        <span className="text-xs font-bold leading-none tracking-widest uppercase">{workshop.date}</span>
                       </div>
-                      {workshop.date && workshop.date.trim() !== "" && (
-                        <div className="absolute top-4 right-4 bg-primary text-white px-4 py-2 rounded-full flex items-center shadow-[0_5px_15px_rgba(37,99,235,0.4)]">
-                          <span className="text-xs font-bold leading-none tracking-widest uppercase">{workshop.date}</span>
-                        </div>
-                      )}
+                    )}
+                  </div>
+
+                  <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container to-[#0A0A0A] relative z-10">
+                    <h3 className="font-headline text-xl font-bold text-white mb-4 line-clamp-3 leading-snug drop-shadow-sm group-hover:text-primary-light transition-colors">
+                      {workshop.title}
+                    </h3>
+
+                    <div className="flex items-center gap-2 mb-6">
+                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                        <span className="material-symbols-outlined text-primary text-[16px]">group</span>
+                      </div>
+                      <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant group-hover:text-on-surface transition-colors font-bold">
+                        {workshop.participants}
+                      </span>
                     </div>
 
-                    <div className="p-8 flex flex-col flex-grow bg-gradient-to-b from-surface-container to-[#0A0A0A] relative z-10 pointer-events-none">
-                      <h3 className="font-headline text-xl font-bold text-white mb-4 line-clamp-3 leading-snug drop-shadow-sm group-hover:text-primary-light transition-colors">
-                        {workshop.title}
-                      </h3>
-                      
-                      <div className="flex items-center gap-2 mb-6">
-                        <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
-                          <span className="material-symbols-outlined text-primary text-[16px]">group</span>
-                        </div>
-                        <span className="text-xs font-label uppercase tracking-widest text-on-surface-variant group-hover:text-on-surface transition-colors font-bold">
-                          {workshop.participants}
-                        </span>
-                      </div>
-
-                      <p className="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3 mt-auto relative z-10 group-hover:text-white/90 transition-colors">
-                        {workshop.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </motion.div>
-            </motion.div>
-            
-            {/* Fade Out Edge Gradient */}
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-surface to-transparent pointer-events-none z-10"></div>
+                    <p className="font-body text-sm text-on-surface-variant leading-relaxed line-clamp-3 mt-auto relative z-10 group-hover:text-white/90 transition-colors">
+                      {workshop.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-surface-container-low border-t border-white/5 py-16 relative z-10 mt-auto">
-        <div className="max-w-7xl mx-auto px-8 text-center text-on-surface-variant flex flex-col items-center gap-6">
-          <h2 className="font-headline text-3xl font-black text-white leading-none"><span className="text-white tracking-widest">CPS</span> <span className="text-white tracking-widest">LAB</span></h2>
-          <p className="font-body max-w-md">Building the future of intelligent systems through rigorous research and open innovation.</p>
-          <div className="w-full h-px bg-white/10 my-4 max-w-2xl"></div>
-          <p className="font-label text-sm">© 2026 IIT Ropar – Cyber Physical System Lab</p>
-        </div>
-      </footer>
     </div>
   );
 }

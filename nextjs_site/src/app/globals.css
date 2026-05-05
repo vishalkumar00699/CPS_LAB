@@ -35,9 +35,9 @@
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
   }
-  
+
   .glassmorphism {
-    @apply bg-white/70 dark:bg-[#121214]/70 backdrop-blur-md border border-white/20 dark:border-white/5 shadow-sm dark:shadow-[0_8px_30px_rgb(0,0,0,0.12)];
+    @apply bg-white/70 dark:bg-[#121214]/70 backdrop-blur-md border border-white/20 dark:border-white/5 shadow-sm dark:shadow-[0_8px_30px_rgb(0, 0, 0, 0.12)];
   }
 
   .gradient-text {
@@ -50,7 +50,7 @@
   .ambient-glow-1 {
     background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.15), transparent 70%);
   }
-  
+
   .ambient-glow-2 {
     background: radial-gradient(circle at 80% 20%, rgba(0, 112, 104, 0.1), transparent 60%);
   }
