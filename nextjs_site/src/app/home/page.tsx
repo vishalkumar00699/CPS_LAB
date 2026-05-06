@@ -19,107 +19,10 @@ const IndiaMap = dynamic(() => import('@/components/IndiaMap'), {
 
 import CyberBackground from '@/components/CyberBackground';
 
-const COGNITO_DOMAIN = process.env.NEXT_PUBLIC_COGNITO_DOMAIN || 'https://auth.cpslabhub.com';
-const COGNITO_CLIENT_ID = process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '1mrpdo856s8ilqavv7kkn8vm97';
-const REDIRECT_URI = typeof window !== 'undefined'
-  ? `${window.location.origin}/home`
-  : 'https://www.cpslabhub.com/home';
-
 function HomeContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { checkUserSession } = useAuth();
-  const [oauthStatus, setOauthStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const hasHandledCode = useRef(false);
-
-  useEffect(() => {
-    const code = searchParams.get('code');
-    const error = searchParams.get('error');
-
-    if (error) {
-      console.error('OAuth error:', error);
-      setOauthStatus('error');
-      window.history.replaceState({}, '', '/home');
-      // Redirect to login after 3 seconds
-      setTimeout(() => {
-        router.push('/login');
-      }, 3000);
-      return;
-    }
-
-    if (!code || hasHandledCode.current) return;
-    hasHandledCode.current = true;
-    setOauthStatus('loading');
-
-    const exchangeToken = async () => {
-      try {
-        console.log('Exchanging code:', code);
-
-        const body = new URLSearchParams({
-          grant_type: 'authorization_code',
-          client_id: COGNITO_CLIENT_ID,
-          code,
-          redirect_uri: REDIRECT_URI,
-        });
-
-        const response = await fetch(`${COGNITO_DOMAIN}/oauth2/token`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: body.toString(),
-        });
-
-        const responseText = await response.text();
-        console.log('Token response status:', response.status);
-        console.log('Token response:', responseText);
-
-        if (!response.ok) {
-          throw new Error(`Token exchange failed: ${responseText}`);
-        }
-
-        const tokens = JSON.parse(responseText);
-        console.log('[OAuth] Token exchange successful, tokens:', { 
-          has_access_token: !!tokens.access_token, 
-          has_id_token: !!tokens.id_token,
-          expires_in: tokens.expires_in 
-        });
-
-        // Store tokens in localStorage
-        localStorage.setItem('cps_access_token', tokens.access_token);
-        localStorage.setItem('cps_id_token', tokens.id_token);
-        if (tokens.refresh_token) {
-          localStorage.setItem('cps_refresh_token', tokens.refresh_token);
-        }
-
-        // ALSO Store in Cookies for better persistence on refresh
-        const maxAge = tokens.expires_in || 3600;
-        document.cookie = `cps_id_token=${tokens.id_token}; path=/; max-age=${maxAge}; SameSite=Lax`;
-        document.cookie = `cps_logged_in=true; path=/; max-age=${maxAge}; SameSite=Lax`;
-
-        console.log('[OAuth] Tokens stored in localStorage and cookies, checking session...');
-
-        // Clean URL FIRST using history API (no re-render triggered)
-        window.history.replaceState({}, '', '/home');
-
-        // THEN update auth state
-        await checkUserSession();
-
-        console.log('[OAuth] Session checked, setting success');
-        setOauthStatus('success');
-
-      } catch (err) {
-        console.error('[OAuth] Token exchange error:', err);
-        setOauthStatus('error');
-        window.history.replaceState({}, '', '/home');
-        
-        // Redirect to login after 3 seconds if OAuth failed
-        setTimeout(() => {
-          router.push('/login');
-        }, 3000);
-      }
-    };
-
-    exchangeToken();
-  }, [searchParams, router, checkUserSession]); // Added dependencies to ensure code exchange triggers when params are ready
 
   const heroImages = [
     "/assets/images/1.png", "/assets/images/2.png", "/assets/images/3.png",
@@ -171,30 +74,6 @@ function HomeContent() {
 
   return (
     <div className="relative flex flex-col min-h-screen bg-surface text-on-surface">
-
-      {/* OAuth Loading Overlay */}
-      {oauthStatus === 'loading' && (
-        <div className="fixed inset-0 z-[999] bg-surface/90 backdrop-blur-md flex flex-col items-center justify-center gap-4">
-          <div className="w-14 h-14 border-4 border-primary/20 border-t-primary rounded-full animate-spin"></div>
-          <p className="text-white font-label tracking-widest uppercase text-sm animate-pulse">Completing Sign In...</p>
-        </div>
-      )}
-
-      {/* OAuth Error Toast */}
-      {oauthStatus === 'error' && (
-        <div className="fixed top-6 right-6 z-[999] bg-red-500/90 backdrop-blur-md text-white px-6 py-4 rounded-2xl shadow-xl flex items-center gap-3">
-          <span className="material-symbols-outlined">error</span>
-          <div className="flex flex-col gap-2">
-            <span className="font-body text-sm font-medium">Google sign-in failed. Redirecting to login...</span>
-            <button 
-              onClick={() => router.push('/login')}
-              className="text-xs underline hover:no-underline transition-all"
-            >
-              Click here to login manually or try again
-            </button>
-          </div>
-        </div>
-      )}
 
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] ambient-glow-1"></div>

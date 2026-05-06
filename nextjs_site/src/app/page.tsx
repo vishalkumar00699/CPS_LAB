@@ -14,15 +14,17 @@ import {
 } from '@/lib/auth';
 
 // ── Cognito Config ──
-const COGNITO_DOMAIN = 'https://cpslab-google.auth.us-east-1.amazoncognito.com';
+const COGNITO_DOMAIN = process.env.NEXT_PUBLIC_COGNITO_DOMAIN || 'https://auth.cpslabhub.com';
 
 // Client ID for username/password login (Amplify)
-const CREDENTIALS_CLIENT_ID = '7ggmg2h7is565730c43am4l15s';
+const CREDENTIALS_CLIENT_ID = process.env.NEXT_PUBLIC_USER_POOL_CLIENT_ID || '1mrpdo856s8ilqavv7kkn8vm97';
 
 // Client ID for Google OAuth login
-const GOOGLE_CLIENT_ID = '1mrpdo856s8ilqavv7kkn8vm97';
+const GOOGLE_CLIENT_ID = process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '1mrpdo856s8ilqavv7kkn8vm97';
 
-const REDIRECT_URI = 'https://www.cpslabhub.com/home';
+const REDIRECT_URI = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+  ? `${window.location.origin}/home`
+  : 'https://www.cpslabhub.com/home';
 const SCOPES = 'openid email profile';
 
 function GoogleIcon() {

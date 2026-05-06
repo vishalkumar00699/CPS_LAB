@@ -21,7 +21,7 @@ export function configureAmplify() {
     region: 'us-east-1'
   });
 
-  const redirectUri = typeof window !== 'undefined' 
+  const redirectUri = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? `${window.location.origin}/home` 
     : 'https://www.cpslabhub.com/home';
 

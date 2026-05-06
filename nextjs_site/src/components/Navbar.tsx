@@ -30,9 +30,9 @@ export default function Navbar() {
   }, [user, googleUser]);
 
   const displayName = user
-    ? (user.attributes?.name || user.attributes?.given_name || user.attributes?.email?.split('@')[0] || user.username || 'User')
+    ? (user.attributes?.name || user.attributes?.given_name || user.attributes?.email || user.username || 'User')
     : googleUser
-    ? (googleUser.name || googleUser.email?.split('@')[0] || 'User')
+    ? (googleUser.name && !googleUser.name.startsWith('google_') ? googleUser.name : (googleUser.email || 'User'))
     : 'User';
   const displayEmail = user
     ? (user.attributes?.email)
@@ -65,7 +65,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-black/90 backdrop-blur-md border-b border-white/10 shadow-[0_8px_32px_0_rgba(180,197,255,0.06)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
         {/* LEFT: Logo */}
-        <div className="flex items-center gap-3">
+        <div className="flex-shrink-0 flex items-center gap-3">
           <Link href="/home" className="flex items-center gap-2">
             <Image
               src="/images/app_logo.png"
@@ -74,21 +74,21 @@ export default function Navbar() {
               height={32}
               className="object-contain"
             />
-            <span className="font-headline text-2xl font-bold text-white tracking-tighter transition-colors">
+            <span className="font-headline text-2xl font-bold text-white tracking-tighter whitespace-nowrap">
               CPS Lab
             </span>
           </Link>
         </div>
 
         {/* CENTER: Navigation Links - Desktop */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
+        <div className="hidden lg:flex items-center justify-center flex-1 px-4 gap-2 xl:gap-4 text-xs xl:text-sm font-medium">
           {navLinks.map((link) => {
             const isActive = pathname === link.path;
             return (
               <Link
                 key={link.name}
                 href={link.path}
-                className={`transition-all rounded-full px-4 py-2 font-bold uppercase tracking-wide ${
+                className={`transition-all rounded-full px-3 xl:px-4 py-2 font-bold uppercase tracking-wide whitespace-nowrap ${
                   isActive
                     ? 'text-primary bg-primary/10'
                     : 'text-white/70 hover:text-white hover:bg-white/5'
@@ -102,7 +102,7 @@ export default function Navbar() {
           {isAdmin && (
             <Link
               href="/admin"
-              className="text-primary hover:bg-primary/10 rounded-full px-4 py-2 text-sm font-bold uppercase tracking-widest border border-primary/20"
+              className="text-primary hover:bg-primary/10 rounded-full px-3 xl:px-4 py-2 text-xs xl:text-sm font-bold uppercase tracking-widest border border-primary/20 whitespace-nowrap"
             >
               Admin
             </Link>
@@ -110,13 +110,13 @@ export default function Navbar() {
         </div>
 
         {/* RIGHT: User Actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex-shrink-0 flex items-center gap-3">
           {/* Desktop User Menu */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
             {isLoading ? (
               <div className="w-24 h-10 bg-white/10 animate-pulse rounded-full" />
             ) : isLoggedIn ? (
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-3 bg-white/5 pl-2 pr-1 py-1 rounded-full border border-white/10">
                 {/* Avatar: Google profile picture or initials */}
                 {displayPicture ? (
                   <img
@@ -124,26 +124,26 @@ export default function Navbar() {
                     alt={displayName || 'User'}
                     width={32}
                     height={32}
-                    className="w-8 h-8 rounded-full object-cover border-2 border-primary/30"
+                    className="w-8 h-8 rounded-full object-cover border border-primary/30"
                   />
                 ) : (
                   <div className="w-8 h-8 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
-                    <span className="text-primary font-bold text-sm uppercase">
+                    <span className="text-primary font-bold text-xs uppercase">
                       {displayName?.[0] || 'U'}
                     </span>
                   </div>
                 )}
-                <div className="text-right">
-                  <p className="text-white text-sm font-medium">
+                <div className="flex flex-col leading-tight max-w-[120px] xl:max-w-[180px]">
+                  <p className="text-white text-xs font-bold truncate">
                     {displayName}
                   </p>
                   {displayEmail && (
-                    <p className="text-white/50 text-xs">{displayEmail}</p>
+                    <p className="text-white/40 text-[10px] truncate">{displayEmail}</p>
                   )}
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-600/10 hover:bg-red-600/20 text-red-500 font-headline font-bold px-6 py-2 rounded-full transition-all duration-200 border border-red-500/20"
+                  className="bg-red-500/10 hover:bg-red-500/20 text-red-500 text-xs font-bold px-4 py-2 rounded-full transition-all duration-200 border border-red-500/20 whitespace-nowrap ml-1"
                 >
                   Logout
                 </button>
@@ -151,7 +151,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className="bg-primary hover:bg-primary/90 px-8 py-3 rounded-full font-semibold text-sm transition-all shadow-md"
+                className="bg-primary hover:bg-primary/90 px-6 py-2 rounded-full font-bold text-sm transition-all shadow-md"
               >
                 Login
               </Link>
