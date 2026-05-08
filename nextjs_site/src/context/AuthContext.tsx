@@ -167,7 +167,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         console.log('[AuthContext] Amplify user found:', currentUser.username);
         setUser(currentUser as any);
         setGoogleUser(null);
-        const email = currentUser.attributes?.email;
+        const email = (currentUser as any).attributes?.email;
         setIsAdmin(!!email && isUserAdmin(email));
         setIsLoading(false);
         return;
