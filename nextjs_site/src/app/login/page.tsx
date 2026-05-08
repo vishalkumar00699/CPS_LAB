@@ -81,7 +81,7 @@ export default function LoginPage() {
           router.push('/home');
         } else if (nextStep.signInStep === 'CONFIRM_SIGN_UP') {
           setAuthStep('CONFIRM_SIGNUP');
-        } else if (nextStep.signInStep === 'CONFIRM_SIGN_IN_WITH_NEW_PASSWORD') {
+        } else if (nextStep.signInStep === 'CONFIRM_SIGN_IN_WITH_NEW_PASSWORD_REQUIRED') {
           setError('A new password is required. Please use the "Forgot Password?" flow to reset it.');
         } else {
           await checkUserSession();
