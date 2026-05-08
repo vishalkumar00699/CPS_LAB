@@ -14,7 +14,7 @@ import {
 } from '@/lib/auth';
 
 const COGNITO_DOMAIN = process.env.NEXT_PUBLIC_COGNITO_DOMAIN || 'https://auth.cpslabhub.com';
-const COGNITO_CLIENT_ID = process.env.NEXT_PUBLIC_COGNITO_CLIENT_ID || '1mrpdo856s8ilqavv7kkn8vm97';
+const COGNITO_CLIENT_ID = '1mrpdo856s8ilqavv7kkn8vm97'; // Used exclusively for Google OAuth
 const REDIRECT_URI = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
   ? `${window.location.origin}/home`
   : 'https://www.cpslabhub.com/home';
@@ -45,13 +45,13 @@ export default function LoginPage() {
   const [confirmationCode, setConfirmationCode] = useState('');
   const [authStep, setAuthStep] = useState<'LOGIN_SIGNUP' | 'CONFIRM_SIGNUP' | 'FORGOT_PASSWORD' | 'CONFIRM_FORGOT_PASSWORD'>('LOGIN_SIGNUP');
 
-  const { user, isLoading: authLoading, checkUserSession } = useAuth();
+  const { user, googleUser, isLoading: authLoading, checkUserSession } = useAuth();
 
   useEffect(() => {
-    if (!authLoading && user) {
+    if (!authLoading && (user || googleUser)) {
       router.push('/home');
     }
-  }, [user, authLoading, router]);
+  }, [user, googleUser, authLoading, router]);
 
   if (authLoading) {
     return (
@@ -74,10 +74,15 @@ export default function LoginPage() {
     try {
       if (isLogin) {
         // Sign In
-        const { nextStep } = await handleSignIn({ username, password });
+        const { nextStep } = await handleSignIn({ username: username.trim(), password });
 
-        if (nextStep.signInStep === 'CONFIRM_SIGN_UP') {
+        if (nextStep.signInStep === 'DONE') {
+          await checkUserSession();
+          router.push('/home');
+        } else if (nextStep.signInStep === 'CONFIRM_SIGN_UP') {
           setAuthStep('CONFIRM_SIGNUP');
+        } else if (nextStep.signInStep === 'CONFIRM_SIGN_IN_WITH_NEW_PASSWORD') {
+          setError('A new password is required. Please use the "Forgot Password?" flow to reset it.');
         } else {
           await checkUserSession();
           router.push('/home');
@@ -180,7 +185,7 @@ export default function LoginPage() {
       });
 
       const authUrl = `${COGNITO_DOMAIN}/oauth2/authorize?${params.toString()}`;
-      
+
       console.log('🔐 [Google Login] Initiating Google OAuth flow:', {
         domain: COGNITO_DOMAIN,
         redirect_uri: REDIRECT_URI,

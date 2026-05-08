@@ -193,14 +193,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       document.cookie = "cps_id_token=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
       document.cookie = "cps_logged_in=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
       
-      // Redirect to Cognito logout
-      const logoutUri = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-        ? `${window.location.origin}/home`
-        : 'https://www.cpslabhub.com/home';
-      const cognitoLogoutUrl = `${COGNITO_DOMAIN}/logout?client_id=${COGNITO_CLIENT_ID}&logout_uri=${encodeURIComponent(logoutUri)}`;
-      window.location.href = cognitoLogoutUrl;
+      // Redirect to Cognito logout ONLY if Google User
+      if (googleUser) {
+        const logoutUri = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+          ? `${window.location.origin}/home`
+          : 'https://www.cpslabhub.com/home';
+        const cognitoLogoutUrl = `${COGNITO_DOMAIN}/logout?client_id=${COGNITO_CLIENT_ID}&logout_uri=${encodeURIComponent(logoutUri)}`;
+        window.location.href = cognitoLogoutUrl;
+        return; // Browser is navigating away
+      }
     }
-    try { await handleSignOut(); } catch {}
+    
+    // For Amplify native user (username/password)
+    try { await handleSignOut(); } catch (err) { console.error('Signout error:', err); }
     setUser(null);
     setGoogleUser(null);
     setIsAdmin(false);

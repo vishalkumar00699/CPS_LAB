@@ -22,7 +22,16 @@ import CyberBackground from '@/components/CyberBackground';
 function HomeContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const { checkUserSession } = useAuth();
+  const { user, googleUser, isLoading: authLoading, checkUserSession } = useAuth();
+
+  useEffect(() => {
+    if (!authLoading) {
+      const isGuest = typeof window !== 'undefined' ? sessionStorage.getItem('guestMode') === 'true' : false;
+      if (!user && !googleUser && !isGuest) {
+        router.push('/login');
+      }
+    }
+  }, [user, googleUser, authLoading, router]);
 
   const heroImages = [
     "/assets/images/1.png", "/assets/images/2.png", "/assets/images/3.png",
@@ -43,7 +52,7 @@ function HomeContent() {
       title: "Serial Monitor",
       desc: "Real-time robust data visualization with IoT bounds.",
       path: "/assets/images/serialmonitor.jpeg",
-      downloadLink: "https://iot-serial-communication-app.s3.us-east-1.amazonaws.com/Serial+Monitor+Setup+1.0.0+(1).exe",
+      downloadLink: "https://iot-serial-communication-app.s3.us-east-1.amazonaws.com/IOT+Serial+Monitor+Setup+1.0.0.exe",
       platform: ".exe"
     },
     {

@@ -26,6 +26,19 @@ export async function handleSignIn({ username, password }: SignInInput) {
     return { isSignedIn, nextStep };
   } catch (error: any) {
     console.error('Sign-in error:', error);
+    // If the user is already signed in but the app state didn't reflect it,
+    // clear the stale session and retry the sign in.
+    if (error?.message?.toLowerCase().includes('already signed in') || error?.message?.toLowerCase().includes('already authenticated') || error?.name === 'UserAlreadyAuthenticatedException') {
+      try {
+        console.log('User already signed in. Clearing stale session and retrying...');
+        await signOut();
+        const { isSignedIn, nextStep } = await signIn({ username, password });
+        return { isSignedIn, nextStep };
+      } catch (retryError) {
+        console.error('Retry sign-in error:', retryError);
+        throw retryError;
+      }
+    }
     throw error;
   }
 }
@@ -53,8 +66,23 @@ export async function handleSignUp({ username, password, options }: SignUpInput)
       options,
     });
     return { isSignUpComplete, userId, nextStep };
-  } catch (error) {
+  } catch (error: any) {
     console.error('Sign-up error:', error);
+    if (error?.message?.toLowerCase().includes('already signed in') || error?.message?.toLowerCase().includes('already authenticated') || error?.name === 'UserAlreadyAuthenticatedException') {
+      try {
+        console.log('User already signed in. Clearing stale session and retrying sign up...');
+        await signOut();
+        const { isSignUpComplete, userId, nextStep } = await signUp({
+          username,
+          password,
+          options,
+        });
+        return { isSignUpComplete, userId, nextStep };
+      } catch (retryError) {
+        console.error('Retry sign-up error:', retryError);
+        throw retryError;
+      }
+    }
     throw error;
   }
 }
@@ -118,10 +146,20 @@ export async function handleConfirmForgotPassword({ username, confirmationCode, 
 export async function handleGetCurrentUser() {
   try {
     const user = await getCurrentUser();
-    const attributes = await fetchUserAttributes();
+    let attributes = {};
+    try {
+      attributes = await fetchUserAttributes();
+    } catch (attrError) {
+      console.warn('Could not fetch user attributes, continuing with empty attributes:', attrError);
+    }
     return { ...user, attributes };
   } catch (error) {
-    console.error('Error in handleGetCurrentUser:', error);
+    // Only log at debug/trace level for not signed in, as it's a common flow
+    if (error?.toString().includes('User unauthenticated')) {
+      console.log('No user currently signed in via Amplify.');
+    } else {
+      console.error('Error in handleGetCurrentUser:', error);
+    }
     return null;
   }
 }

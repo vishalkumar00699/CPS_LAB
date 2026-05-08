@@ -52,13 +52,13 @@ export default function LoginPage() {
   const [confirmationCode, setConfirmationCode] = useState('');
   const [authStep, setAuthStep] = useState<'LOGIN_SIGNUP' | 'CONFIRM_SIGNUP' | 'FORGOT_PASSWORD' | 'CONFIRM_FORGOT_PASSWORD'>('LOGIN_SIGNUP');
   
-  const { user, isLoading: authLoading, checkUserSession } = useAuth();
+  const { user, googleUser, isLoading: authLoading, checkUserSession } = useAuth();
   
   useEffect(() => {
-    if (!authLoading && user) {
+    if (!authLoading && (user || googleUser)) {
       router.push('/home');
     }
-  }, [user, authLoading, router]);
+  }, [user, googleUser, authLoading, router]);
 
   if (authLoading) {
     return (

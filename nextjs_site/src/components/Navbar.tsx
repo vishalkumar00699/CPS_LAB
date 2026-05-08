@@ -13,16 +13,16 @@ export default function Navbar() {
   const router = useRouter();
   const pathname = usePathname();
 
-  console.log('Navbar Auth State:', { 
-    isLoggedIn: !!(user || googleUser), 
-    user: user ? user.username : 'null', 
+  console.log('Navbar Auth State:', {
+    isLoggedIn: !!(user || googleUser),
+    user: user ? user.username : 'null',
     googleUser: googleUser ? googleUser.email : 'null',
     isLoading
   });
 
   // Unified display: works for both Amplify user and Google OAuth user
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
   useEffect(() => {
     const checkLogged = !!(user || googleUser);
     const hasCookie = typeof document !== 'undefined' && document.cookie.includes('cps_logged_in=true');
@@ -30,15 +30,15 @@ export default function Navbar() {
   }, [user, googleUser]);
 
   const displayName = user
-    ? (user.attributes?.name || user.attributes?.given_name || user.attributes?.email || user.username || 'User')
+    ? (user.username || 'User')
     : googleUser
-    ? (googleUser.name && !googleUser.name.startsWith('google_') ? googleUser.name : (googleUser.email || 'User'))
-    : 'User';
+      ? (googleUser.name && !googleUser.name.startsWith('google_') ? googleUser.name : (googleUser.email || 'User'))
+      : 'User';
   const displayEmail = user
     ? (user.attributes?.email)
     : googleUser
-    ? (googleUser.email)
-    : null;
+      ? (googleUser.email)
+      : null;
   const displayPicture = googleUser?.picture || null;
 
   const handleLogout = async () => {
@@ -88,11 +88,10 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.path}
-                className={`transition-all rounded-full px-3 xl:px-4 py-2 font-bold uppercase tracking-wide whitespace-nowrap ${
-                  isActive
-                    ? 'text-primary bg-primary/10'
-                    : 'text-white/70 hover:text-white hover:bg-white/5'
-                }`}
+                className={`transition-all rounded-full px-3 xl:px-4 py-2 font-bold uppercase tracking-wide whitespace-nowrap ${isActive
+                  ? 'text-primary bg-primary/10'
+                  : 'text-white/70 hover:text-white hover:bg-white/5'
+                  }`}
               >
                 {link.name}
               </Link>
@@ -187,11 +186,10 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.path}
-                    className={`block px-4 py-3 rounded-xl text-base font-bold transition-colors ${
-                      isActive
-                        ? 'text-primary bg-primary/10'
-                        : 'text-white/70 hover:text-white hover:bg-white/5'
-                    }`}
+                    className={`block px-4 py-3 rounded-xl text-base font-bold transition-colors ${isActive
+                      ? 'text-primary bg-primary/10'
+                      : 'text-white/70 hover:text-white hover:bg-white/5'
+                      }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
@@ -218,10 +216,10 @@ export default function Navbar() {
                 <div className="pt-4 space-y-3">
                   <div className="flex items-center gap-3 px-4 py-3 bg-white/5 rounded-xl">
                     {displayPicture ? (
-                      <img 
-                        src={displayPicture} 
-                        alt={displayName || 'User'} 
-                        className="w-10 h-10 rounded-full object-cover border-2 border-primary/30" 
+                      <img
+                        src={displayPicture}
+                        alt={displayName || 'User'}
+                        className="w-10 h-10 rounded-full object-cover border-2 border-primary/30"
                       />
                     ) : (
                       <div className="w-10 h-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center">
