@@ -5,7 +5,7 @@ export const config = {
   Auth: {
     Cognito: {
       userPoolId: 'us-east-1_NLhmZBt0q',
-      userPoolClientId: '1mrpdo856s8ilqavv7kkn8vm97',
+      userPoolClientId: '7ggmg2h7is565730c43am4l15s',
       region: 'us-east-1',
     },
   },
